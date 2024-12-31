@@ -1,0 +1,58 @@
+<title>{% block title %}PRIME Supermarket - Reset Password (Staff){% endblock %}</title>
+
+{% block content %}
+{% from "includes/_formHelper.html" import render_field %}
+<head>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static', filename='emailReset.css') }}">
+</head>
+<!-- Password Reset 1 - Bootstrap Brain Component -->
+<div class="background-image">
+  <div>
+    <div class="container">
+      <div class="row justify-content-md-center">
+        <div class="col-12 col-md-11 col-lg-8 col-xl-7 col-xxl-6">
+          <div class="bg-white p-4 p-md-5 rounded shadow-sm">
+            <div class="row gy-3 mb-5">
+              <div class="col-12">
+                <div class="text-center">
+                  <a href="#!">
+                    <img src="prime email logo.avif" alt="Prime Logo" width="200" height="80">
+                  </a>
+                </div>
+              </div>
+              <div class="col-12">
+                <h2 class="fs-6 fw-normal text-center text-secondary m-0 px-md-5">Provide the email address associated with your STAFF account to recover your password.</h2>
+              </div>
+            </div>
+            <form method="POST" action="">
+              <div class="row gy-3 gy-md-4 overflow-hidden">
+                <div class="col-12">
+                  <div class="form-group">
+                      {{ render_field(form.email_reset, class="form-control") }}
+                  </div>
+                </div>
+                <div class="col-12">
+                  <div class="d-grid">
+                    <input type="submit" value="Submit" class="btn btn-primary"/>
+                  </div>
+                </div>
+              </div>
+            </form>
+            <div class="row">
+              <div class="col-12">
+                <hr class="mt-5 mb-4 border-secondary-subtle">
+                <div class="d-flex gap-4 justify-content-center">
+                  <a href="/staffLogin" class="link-secondary text-decoration-none">Log In</a>
+                  <a href="/staffSignUp" class="link-secondary text-decoration-none">Register</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,122 @@
+{% extends "base.html" %}
+{% block title %} Products page {% endblock %}
+
+{% block content %}
+{% from "includes/_formHelper.html" import render_field %}
+
+<script src="https://js.stripe.com/v3/"></script>
+<link rel="stylesheet" href="{{ url_for('static', filename='checkout.css') }}" />
+<!-- Display a payment form -->
+ {% if cart_session != {} %}
+<form id="payment-form" method="POST" action="/otp-checkout">
+    <input type="hidden" name="csrf_token" value="{{ csrf_token }}">
+
+    {% for key, product in cart_session.items() %}
+
+    <div class="row mb-4 d-flex justify-content-between align-items-center">
+        <div class="col-md-2 col-lg-2 col-xl-2">
+        <img src="{{ url_for('static', filename=cart_session[key]['_Products__url']) }}"
+class="img-fluid rounded-3" alt="Cotton T-shirt">
+        </div>
+        <div class="col-md-3 col-lg-3 col-xl-3">
+        <h6 class="text-muted">{{ cart_session[key]['_Products__type'] }}</h6>
+        <h6 class="text-black mb-0">{{ cart_session[key]['_Products__name'] }}</h6>
+        </div>
+        
+        <div class="col-md-3 col-lg-3 col-xl-2 d-flex">
+    
+        <input type="hidden" name="key" value="{{ cart_session[key]['_Products__id'] }}">
+        <p>{{ cart_quantity_session[key]['_Cart__cart_quantity'] }}</p>
+        <input type="hidden" name="quantity" value="{{ cart_quantity_session[key]['_Cart__cart_quantity'] }}">
+        </div>
+        <!-- {{cart_quantity_session[key]['_Cart__cart_quantity']}} -->
+        <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
+        <h6 class="mb-0">${{ "%0.2f" | format(cart_session[key]['_Products__price'] | float) }}</h6>
+        </div>
+        <div class="col-md-3 col-lg-3 col-xl-2 d-flex">
+</div>
+        <div class="col-md-1 col-lg-1 col-xl-1 text-end">
+        <a href="#!" class="text-muted"><i class="fas fa-times"></i></a>
+        </div>
+    </div>
+    <hr class="my-4">
+    {% endfor %}
+    <div class="text-end">
+        <h6>
+            Shipping: $5
+            <br>
+            Total Amount: ${{ '%0.2f'|  format(total_amount | float) }}
+        </h6>
+    </div>
+
+    <h3>Saved Cards</h3>
+    {% for key in cards_dict %}
+    {% if email == cards_dict[key]['email'] %}
+    <div class="form-group">
+      <label>
+        <input type="radio" name="card_option" required="required" value="{{ cards_dict[key]['cus_id'] }}" {% if selected_card == cards_dict[key]['cus_id'] %}checked{% endif %}>
+        Ending in {{ cards_dict[key]['last_4'] }}
+      </label>
+  </div>
+  {% endif %}
+  {% endfor %}
+  <hr>
+  <h3>Saved Address</h3>
+  {% for key in address_dict %}
+  {% if email == address_dict[key]['email'] %}
+    <div class="form-group">
+      <label>        
+          <!-- <input type="radio" name="address_option" value="{{ key }}" checked="checked" {% if selected_address == key %} {% endif %}>
+          Ending in {{ address_dict[key] }} -->
+          <input  type="radio" required="required" name="address_option" value="{{ key }}" {% if selected_address == key %}checked{% endif %}>
+          {% if address_dict[key][line2] %}
+            {% set concat_address = address_dict[key][line1] + address_dict[key][line2] %}
+        Address: {{ concat_address }}
+        {% else %}
+        {% set concat_address = address_dict[key]['line1'] + ', ' + address_dict[key]['city'] + ', ' + address_dict[key]['pos_code'] %}
+        Address: {{ concat_address }}
+        {% endif %}
+
+      </label>
+  </div>
+  {% endif %}
+  {% endfor %}
+  <br>
+    <input type="submit" name="submit" value="Submit" class="btn btn-primary">
+</form>
+{% endif %}
+{% endblock %}
+
+{% block javascript %}
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        document.getElementById('payment-form').addEventListener('submit', function(event) {
+            var cardOptions = document.getElementsByName('card_option');
+            var cardSelected = false;
+
+            for (var i = 0; i < cardOptions.length; i++) {
+                if (cardOptions[i].checked) {
+                    cardSelected = true;
+                    break;
+                }
+            }
+
+            if (!cardSelected) {
+                event.preventDefault();
+                alert('Please select a card or input a valid card.');
+            } else {
+                console.log('Card selected: ', cardSelected);
+            }
+        });
+    });
+    </script>
+
+
+{% endblock %}
+
+
+{% block footer %}
+{% endblock %}
+
+

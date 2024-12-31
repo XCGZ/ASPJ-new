@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block title %} Products page {% endblock %}
+
+{% block content %}
+{% from "includes/_formHelper.html" import render_field %}
+
+
+{% for key in cart_session %}
+
+{{cart_session[key]['_Products__id']}}
+{% endfor %}
+
+{% endblock %}

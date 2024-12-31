@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% block title %}Products Adding{% endblock %}
+
+{% block navbar %}
+{% include 'includes/_staff_navbar.html' %}
+
+    <!-- Display a payment form -->
+<form id="cardform" method="POST" action="/cartProducts">
+    {% if cards_dict != {} %}
+    {% for key in cards_dict %}
+    <div class="form-group">
+      <label>
+          <input type="radio" name="card_option" value="{{ cards_dict[key]['cus_id'] }}" {% if selected_card == cards_dict[key]['cus_id'] %} checked {% endif %}>
+          Ending in {{ cards_dict[key]['last_4'] }}
+      </label>
+  </div>
+  {% endfor %}
+  <input type="submit" value="Submit" class="btn btn-primary">
+  {% else %}
+  <form action="/cartProducts" method="POST" id="payment-form">
+    <div class="form-row">
+      <label for="card-number">Card Number</label>
+          <div id="card-number">
+            <input type="text">
+          </div>
+          <label for="card-expiry">Expiration Date</label>
+          <div id="card-expiry"></div>
+          <label for="card-cvc">CVC</label>
+          <div id="card-cvc"></div>
+  
+      <!-- Used to display Element errors. -->
+      <div id="card-errors" role="alert"></div>
+    </div>
+  
+    <button>Submit Payment</button>
+  </form>
+  {% endif %}
+
+{% endblock %}

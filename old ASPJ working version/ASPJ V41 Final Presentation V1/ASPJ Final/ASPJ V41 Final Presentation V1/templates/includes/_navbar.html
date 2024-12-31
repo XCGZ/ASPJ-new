@@ -1,0 +1,159 @@
+<style>
+    #main_navbar {
+    .col {
+        padding: 0;
+        margin: 0;
+    }
+
+    .row {
+        padding: 0;
+        margin: 0;
+    }
+
+    .nav-link {
+        color: white;
+    }
+
+    .nav-link:hover {
+        color: lightslategrey;
+    }
+
+}
+
+.navbar-brand:not(#main_navbar_brand, #main_navbar_brand_hidden) {
+    background-image: url(Images/prime_logo.png);
+    width: 180px;
+    height: 58px;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+@media only screen and (min-width: 992px) {
+    #categories_dropdown {
+        padding-left: 20px;
+    }
+
+    #menuitems_start {
+        justify-content: start;
+    }
+
+    #searchbar_center {
+        justify-content: center;
+    }
+
+    #cart_end {
+        justify-content: end;
+    }
+
+    #main_navbar_brand_hidden {
+        display: none;
+    }
+}
+
+
+@media only screen and (max-width: 992px) {
+    .expand_full {
+        width: 100%;
+    }
+
+    #main_navbar_brand {
+        display: none;
+    }
+
+}
+</style>
+
+
+
+<nav class="navbar navbar-dark navbar-expand-lg bg-body-tertiary" style="background-color: #3A5A40 !important;" id="main_navbar">
+    <div class="container-fluid px-0">
+        <a class="navbar-brand ms-5" href="{{ url_for('home') }}" id="main_navbar_brand_hidden">
+            <img src="{{ url_for('static', filename='/Images/untitled6.png') }}" style="width: 100px;">
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar_main" aria-controls="navbar_main" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="navbar-collapse collapse row row-cols-1" style="background-color: #3A5A40;" id="navbar_main">
+            <div class="row col row-cols-2">
+                <div class="col expand_full">
+                    <a class="navbar-brand ms-5" href="{{ url_for('home') }}" id="main_navbar_brand">
+                        <img src="{{ url_for('static', filename='/Images/untitled6.png') }}" style="width: 100px;">
+                    </a>
+                </div>
+                <div class="col expand_full d-flex justify-content-end">
+                    <ul class="navbar-nav mb-2 mb-lg-0">
+                        {% if current_user.is_authenticated %}
+
+                        <li class="nav-item me-5"">
+                            <a class="nav-link" href="/account"><i class="bi bi-person-circle"></i> My Account</a>
+                        </li>
+                        <li class="nav-item me-5"">
+                            <a class="nav-link" href="#"><i class="bi bi-question-circle"></i> Help Centre</a>
+                        </li>
+                        <li class="nav-item me-5">
+                            <a class="nav-link" href="/logout"><i class="bi bi-person-circle"></i> Logout</a>
+                        </li>
+                        {% else %}
+                        <li class="nav-item me-5">
+                            <a class="nav-link" href="/login"><i class="bi bi-person-circle"></i> Login/Sign up</a>
+                        </li>
+                        <li class="nav-item me-5">
+                            <a class="nav-link" href="#"><i class="bi bi-question-circle"></i> Help Centre</a>
+                        </li>
+                        {% endif %}
+                    </ul>
+                </div>
+            </div>
+            <div class="row col row-cols-3">
+                <div class="col expand_full">
+                    <ul class="navbar-nav" id="menuitems_start">
+                        <li class="nav-item dropdown mx-3" id="categories_dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Categories
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <li><a class="dropdown-item" href="#">Dairy, Chilled & Eggs</a></li>
+                                <li><a class="dropdown-item" href="#">Fruits & Vegetables</a></li>
+                                <li><a class="dropdown-item" href="#">Meat & Seafood</a></li>
+                                <li><a class="dropdown-item" href="#">Frozen</a></li>
+                                <li><a class="dropdown-item" href="#">Household</a></li>
+                                <li><a class="dropdown-item" href="#">Snacks & Confectionary</a></li>
+                                <li><a class="dropdown-item" href="#">Drinks</a></li>
+                                <li><a class="dropdown-item" href="#">Beauty & Personal Care</a></li>
+                                <li><a class="dropdown-item" href="#">Alcoholic Beverages</a></li>
+                                <li><a class="dropdown-item" href="#">Health & Wellness</a></li>
+                                <li><a class="dropdown-item" href="#">Baby, Child & Toys</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item mx-3">
+                            <a class="nav-link" aria-current="page" href="#">Promotions</a>
+                        </li>
+                        <li class="nav-item mx-3">
+                            <a class="nav-link" href="{{ url_for('products') }}">Shopping Lists</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col expand_full">
+                    <ul class="navbar-nav" id="searchbar_center">
+                        <li class="nav-item">
+                            <form class="" role="search">
+                                <div class="input-group">
+                                    <input class="form-control shadow-none" type="search" placeholder="Search for products" aria-label="Search">
+                                    </button>
+                                </div>
+                            </form>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col expand_full">
+                    <ul class="navbar-nav" id="cart_end">
+                        <li class="nav-item">
+                            <a class="nav-link me-5"" href="{{url_for('cart_Products')}}"><i class="bi bi-cart"></i> Cart</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>

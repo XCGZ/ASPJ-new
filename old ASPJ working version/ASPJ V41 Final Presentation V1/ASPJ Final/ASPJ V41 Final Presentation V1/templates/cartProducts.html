@@ -1,0 +1,135 @@
+{% extends "base.html" %}
+{% block title %} Cart Page {% endblock %}
+
+{% block content %}
+{% from "includes/_formHelper.html" import render_field %}
+<script src="https://js.stripe.com/v3/"></script>
+<script src="{{ url_for('static', filename='profile.js') }}" defer></script>
+<script src="https://js.stripe.com/v3/"></script>
+<section class="h-100 h-custom">
+  <div class="container py-5 h-100">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col-12">
+        <div class="card card-registration card-registration-2" style="border-radius: 15px;">
+          <div class="card-body p-0">
+            <div class="row g-0">
+              <div class="col-lg-8">
+                <div class="p-5">
+                  <div class="d-flex justify-content-between align-items-center mb-5">
+                    <h1 class="fw-bold mb-0 text-black">Shopping Cart</h1>
+                    <h6 class="mb-0 text-muted"></h6>
+                  </div>
+
+                  <hr class="my-4">
+                  <form method="POST" action="/cart-checkout" id="checkout-form">
+
+                    <!-- Items -->
+                    {% for key, product in cart_session.items() %}
+
+                    <div class="row mb-4 d-flex justify-content-between align-items-center">
+                      <div class="col-md-2 col-lg-2 col-xl-2">
+                        <img src="{{ url_for('static', filename=cart_session[key]['_Products__url']) }}"
+     class="img-fluid rounded-3" alt="Cotton T-shirt">
+                      </div>
+                      <div class="col-md-3 col-lg-3 col-xl-3">
+                        <h6 class="text-muted">{{ cart_session[key]['_Products__type'] }}</h6>
+                        <h6 class="text-black mb-0">{{ cart_session[key]['_Products__name'] }}</h6>
+                      </div>
+                      
+                      <div class="col-md-3 col-lg-3 col-xl-2 d-flex">
+                    
+                        <input type="hidden" name="key" value="{{ cart_session[key]['_Products__id'] }}">
+                        
+                        <input id="" min="1" max="{{ cart_session[key]['_Products__quantity'] }}" name="quantity" value="{{cart_quantity_session[key]['_Cart__cart_quantity']}}"
+                        type="number" class="form-control form-control-sm">
+
+                      </div>
+                      <!-- {{cart_quantity_session[key]['_Cart__cart_quantity']}} -->
+                      <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
+                        <h6 class="mb-0">${{ "%0.2f" | format(cart_session[key]['_Products__price'] | float) }}</h6>
+                      </div>
+                      <div class="col-md-3 col-lg-3 col-xl-2 d-flex">
+                <button type="submit" name="remove_id" value="{{ cart_session[key]['_Products__id'] }}" class="btn btn-primary">Remove</button>
+                </div>
+                      <div class="col-md-1 col-lg-1 col-xl-1 text-end">
+                        <a href="#!" class="text-muted"><i class="fas fa-times"></i></a>
+                      </div>
+                    </div>
+
+                    <hr class="my-4">
+                    {% endfor %}
+                    <!-- Items end -->
+                    
+
+                    <div class="pt-5">
+                      <h6 class="mb-0"><a href="{{ url_for('products') }}" class="text-body"><i
+                            class="fas fa-long-arrow-alt-left me-2"></i>Back
+                          to shop</a></h6>
+                    </div>
+                </div>
+              </div>
+              <div class="col-lg-4 bg-grey">
+                <div class="p-5">
+                  <h3 class="fw-bold mb-5 mt-2 pt-1">Summary</h3>
+                  <hr class="my-4">
+
+                  
+
+
+                  <div class="d-flex justify-content-between mb-3">
+                    <h5 class="text-uppercase" style="line-height: 2rem;">Total price:<br> Calculated at Checkout</h5>
+
+                  </div>
+                  {% if cart_session %}
+                  {% if cards_dict != {} and address_dict != {} %}
+                  <input type="submit" name="submit" value="Checkout" class="btn btn-dark btn-block btn-lg"
+                    data-mdb-ripple-color="dark">
+                  {% elif cards_dict != {} and address_dict == {} %}
+                  <input type="submit" name="submit" value="Checkout" class="btn btn-dark btn-block btn-lg"
+                    data-mdb-ripple-color="dark" id="checkout-btn">
+                  {% elif cards_dict == {} and address_dict != {} %}
+                  <input type="submit" name="submit" value="Checkout" class="btn btn-dark btn-block btn-lg"
+                    data-mdb-ripple-color="dark" id="checkout-btn">
+                  {% else %}
+                  <input type="submit" name="submit" value="Checkout" class="btn btn-dark btn-block btn-lg"
+                    data-mdb-ripple-color="dark" id="checkout-btn">
+                  {% endif %}
+                  {% else %}
+                  <input type="button" name="submit" value="Checkout" class="btn btn-dark btn-block btn-lg"
+                    data-mdb-ripple-color="dark" onclick="alert('Your Cart is Empty. Please Add a Product.')">
+                  {% endif %}
+                  </form>
+                  
+                </div>
+                </form>
+
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+{% block javascript %}
+<script>
+document.getElementById('checkout-btn').addEventListener('click', function(event) {
+        {% if address_dict == {} and cards_dict == {} %}
+        alert('Please save card and address details before checking out');
+            event.preventDefault();
+        {% elif address_dict == {} and cards_dict != {} %}
+        alert('Please address details before checking out');
+            event.preventDefault();
+        {% elif address_dict != {} and cards_dict == {} %}
+        alert('Please card details before checking out');
+            event.preventDefault();
+          {% endif %}
+
+    });
+</script>
+{% endblock %}
+
+{% endblock %}

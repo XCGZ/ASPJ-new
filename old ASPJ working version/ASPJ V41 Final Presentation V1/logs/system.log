@@ -1,0 +1,84 @@
+2024-07-31 01:18:08,610 Log_ID: [1] CRITICAL __init__.py : Critical error: Simulated system outage
+2024-07-31 01:18:08,610 Log_ID: [2] ERROR __init__.py : Simulated system outage
+Traceback (most recent call last):
+  File "d:\Shared Folder\Year 2\ASPJ Assignment\ASPJ V22 - logging csrf\__init__.py", line 259, in test_critical_error_logging
+    raise SystemExit("Simulated system outage")
+SystemExit: Simulated system outage
+2024-07-31 01:19:01,222 Log_ID: [1] CRITICAL __init__.py : Critical error: Simulated system outage
+2024-07-31 01:19:01,223 Log_ID: [2] ERROR __init__.py : Simulated system outage
+Traceback (most recent call last):
+  File "d:\Shared Folder\Year 2\ASPJ Assignment\ASPJ V22 - logging csrf\__init__.py", line 259, in test_critical_error_logging
+    raise SystemExit("Simulated system outage")
+SystemExit: Simulated system outage
+2024-07-31 01:22:05,927 Log_ID: [1] CRITICAL __init__.py : Critical error: Simulated system outage
+2024-07-31 01:22:05,927 Log_ID: [2] ERROR __init__.py : Simulated system outage
+Traceback (most recent call last):
+  File "d:\Shared Folder\Year 2\ASPJ Assignment\ASPJ V22 - logging csrf\__init__.py", line 259, in test_critical_error_logging
+    raise SystemExit("Simulated system outage")
+SystemExit: Simulated system outage
+2024-08-11 22:35:14,430 Log_ID: [1] CRITICAL __init__.py : Critical error: Simulated system outage
+2024-08-11 22:35:14,430 Log_ID: [2] ERROR __init__.py : Simulated system outage
+Traceback (most recent call last):
+  File "d:\Shared Folder\Year 2\ASPJ Assignment\ASPJ V35 ip db\ASPJ Final\ASPJ V35 ip db\__init__.py", line 292, in test_critical_error_logging
+    raise SystemExit("Simulated system outage")
+SystemExit: Simulated system outage
+2024-08-12 19:15:08,773 Log_ID: [1] CRITICAL __init__.py : Critical error: Simulated system outage
+2024-08-12 19:15:08,774 Log_ID: [2] ERROR __init__.py : Simulated system outage
+Traceback (most recent call last):
+  File "c:\Shared Folder\Year 2\Y2S1\ASPJ Presentation last few Version\ASPJ V41 Final Presentation V1\ASPJ Final\ASPJ V41 Final Presentation V1\__init__.py", line 319, in test_critical_error_logging
+    raise SystemExit("Simulated system outage")
+SystemExit: Simulated system outage
+2024-08-12 19:15:12,336 Log_ID: [1] CRITICAL __init__.py : Critical error: Simulated system outage
+2024-08-12 19:15:12,336 Log_ID: [2] ERROR __init__.py : Simulated system outage
+Traceback (most recent call last):
+  File "c:\Shared Folder\Year 2\Y2S1\ASPJ Presentation last few Version\ASPJ V41 Final Presentation V1\ASPJ Final\ASPJ V41 Final Presentation V1\__init__.py", line 319, in test_critical_error_logging
+    raise SystemExit("Simulated system outage")
+SystemExit: Simulated system outage
+2024-08-12 19:15:51,950 Log_ID: [1] CRITICAL __init__.py : Critical error: Simulated system outage
+2024-08-12 19:15:51,950 Log_ID: [2] ERROR __init__.py : Simulated system outage
+Traceback (most recent call last):
+  File "c:\Shared Folder\Year 2\Y2S1\ASPJ Presentation last few Version\ASPJ V41 Final Presentation V1\ASPJ Final\ASPJ V41 Final Presentation V1\__init__.py", line 319, in test_critical_error_logging
+    raise SystemExit("Simulated system outage")
+SystemExit: Simulated system outage
+2024-08-12 19:16:11,332 Log_ID: [1] CRITICAL __init__.py : Critical error: Simulated system outage
+2024-08-12 19:16:11,332 Log_ID: [2] ERROR __init__.py : Simulated system outage
+Traceback (most recent call last):
+  File "c:\Shared Folder\Year 2\Y2S1\ASPJ Presentation last few Version\ASPJ V41 Final Presentation V1\ASPJ Final\ASPJ V41 Final Presentation V1\__init__.py", line 319, in test_critical_error_logging
+    raise SystemExit("Simulated system outage")
+SystemExit: Simulated system outage
+2024-08-12 19:18:41,863 Log_ID: [1] CRITICAL __init__.py : Critical error: Simulated system outage
+2024-08-12 19:18:41,863 Log_ID: [2] ERROR __init__.py : Simulated system outage
+Traceback (most recent call last):
+  File "c:\Shared Folder\Year 2\Y2S1\ASPJ Presentation last few Version\ASPJ V41 Final Presentation V1\ASPJ Final\ASPJ V41 Final Presentation V1\__init__.py", line 319, in test_critical_error_logging
+    raise SystemExit("Simulated system outage")
+SystemExit: Simulated system outage
+2024-08-12 19:19:30,167 CRITICAL __init__.py : Critical error: Simulated system outage
+2024-08-12 19:19:30,167 ERROR __init__.py : Simulated system outage
+Traceback (most recent call last):
+  File "c:\Shared Folder\Year 2\Y2S1\ASPJ Presentation last few Version\ASPJ V41 Final Presentation V1\ASPJ Final\ASPJ V41 Final Presentation V1\__init__.py", line 319, in test_critical_error_logging
+    raise SystemExit("Simulated system outage")
+SystemExit: Simulated system outage
+2024-08-13 11:17:43,766 CRITICAL __init__.py : Critical error: Simulated system outage
+2024-08-13 11:17:43,770 ERROR __init__.py : Simulated system outage
+Traceback (most recent call last):
+  File "c:\Shared Folder\Year 2\Y2S1\ASPJ Presentation last few Version\ASPJ V41 Final Presentation V1\ASPJ Final\ASPJ V41 Final Presentation V1\__init__.py", line 321, in test_critical_error_logging
+    raise SystemExit("Simulated system outage")
+SystemExit: Simulated system outage
+2024-08-13 14:53:26,778 CRITICAL __init__.py : Critical error: Simulated system outage
+2024-08-13 14:53:26,778 ERROR __init__.py : Simulated system outage
+Traceback (most recent call last):
+  File "c:\Shared Folder\Year 2\Y2S1\ASPJ Presentation last few Version\ASPJ V41 Final Presentation V1\ASPJ Final\ASPJ V41 Final Presentation V1\__init__.py", line 321, in test_critical_error_logging
+    raise SystemExit("Simulated system outage")
+SystemExit: Simulated system outage
+2024-08-13 16:52:26,921 CRITICAL __init__.py : Critical error: Simulated system outage
+2024-08-13 16:52:26,921 ERROR __init__.py : Simulated system outage
+Traceback (most recent call last):
+  File "c:\Shared Folder\Year 2\Y2S1\ASPJ Presentation last few Version\ASPJ V41 Final Presentation V1\ASPJ Final\ASPJ V41 Final Presentation V1\__init__.py", line 321, in test_critical_error_logging
+    raise SystemExit("Simulated system outage")
+SystemExit: Simulated system outage
+2024-08-13 16:56:43,186 CRITICAL __init__.py : Critical error: Simulated system outage
+2024-08-13 16:56:43,186 ERROR __init__.py : Simulated system outage
+Traceback (most recent call last):
+  File "c:\Shared Folder\Year 2\Y2S1\ASPJ Presentation last few Version\ASPJ V41 Final Presentation V1\ASPJ Final\ASPJ V41 Final Presentation V1\__init__.py", line 321, in test_critical_error_logging
+    raise SystemExit("Simulated system outage")
+SystemExit: Simulated system outage

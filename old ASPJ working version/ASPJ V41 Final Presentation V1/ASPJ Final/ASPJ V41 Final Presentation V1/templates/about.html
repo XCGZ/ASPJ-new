@@ -1,0 +1,544 @@
+<!-- /*
+* Bootstrap 5
+* Template Name: Furni
+* Template Author: Untree.co
+* Template URI: https://untree.co/
+* License: https://creativecommons.org/licenses/by/3.0/
+*/ -->
+
+
+
+
+
+{% block content %}
+{% from "includes/_formHelper.html" import render_field %}
+
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta http-equiv="Content-Security-Policy" content="frame-src 'self' https://www.google.com/maps/embed;">
+  <meta name="description" content="" />
+  <meta name="keywords" content="bootstrap, bootstrap4" />
+
+		<!-- Bootstrap CSS -->
+		<link href="{{ url_for('static', filename='bootstrap.min.css') }}" rel="stylesheet">
+		<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+		<link href="{{ url_for('static', filename='tiny-slider.css') }}" rel="stylesheet">
+		<link href="{{ url_for('static', filename='styles.css') }}" rel="stylesheet">
+		<title>Furni Free Bootstrap 5 Template for Furniture and Interior Design Websites by Untree.co </title>
+	<style>
+	iframe{
+		width: 100%;
+        height: 100%;
+        }
+    .map-container{
+    	height:600px;
+    	}
+		#main_navbar {
+    .col {
+        padding: 0;
+        margin: 0;
+    }
+
+    .row {
+        padding: 0;
+        margin: 0;
+    }
+
+    .nav-link {
+        color: white;
+    }
+
+    .nav-link:hover {
+        color: lightslategrey;
+    }
+
+}
+
+.navbar-brand:not(#main_navbar_brand, #main_navbar_brand_hidden) {
+    background-image: url(Images/prime_logo.png);
+    width: 180px;
+    height: 58px;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+@media only screen and (min-width: 992px) {
+    #categories_dropdown {
+        padding-left: 20px;
+    }
+
+    #menuitems_start {
+        justify-content: start;
+    }
+
+    #searchbar_center {
+        justify-content: center;
+    }
+
+    #cart_end {
+        justify-content: end;
+    }
+
+    #main_navbar_brand_hidden {
+        display: none;
+    }
+}
+
+
+@media only screen and (max-width: 992px) {
+    .expand_full {
+        width: 100%;
+    }
+
+    #main_navbar_brand {
+        display: none;
+    }
+
+}
+	</style>
+	</head>
+
+	<body>
+		<nav class="navbar navbar-dark navbar-expand-lg bg-body-tertiary" style="background-color: #3b5d50 !important; height: auto;" id="main_navbar">
+			<div class="container-fluid px-0">
+				<a class="navbar-brand ms-5" href="{{ url_for('products') }}" id="main_navbar_brand_hidden">
+					<img src="{{ url_for('static', filename='/Images/untitled6.png') }}" style="height: 100%; width: auto;">
+				</a>
+				<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar_main" aria-controls="navbar_main" aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+		
+				<div class="navbar-collapse collapse row row-cols-1" style="background-color: #3b5d50;" id="navbar_main">
+					<div class="row col row-cols-2">
+						<div class="col expand_full">
+							<ul class="navbar-nav mb-2 mb-lg-0">
+								<li class="nav-item me-5"">
+									<a class="navbar-brand ms-5" href="{{ url_for('index') }}" id="main_navbar_brand">
+										<img src="{{ url_for('static', filename='/Images/Untitled6.png') }}" style="height: 80px; width: auto;">
+									</a>
+								</li>
+								<li class="nav-item me-5">
+									<a class="nav-link" href="{{ url_for('products') }}"> Shop</a>
+								</li>
+								<li class="nav-item me-5">
+									<a class="nav-link" href="{{ url_for('contact') }}"> Contact Us</a>
+								</li>
+								<li class="nav-item me-5">
+									<a class="nav-link" href="{{ url_for('about') }}"> About Us</a>
+								</li>
+							</ul>
+						</div>
+						<div class="col expand_full d-flex justify-content-end">
+							<ul class="navbar-nav mb-2 mb-lg-0">
+								<!-- if current user is authenticated  (add iun when intergated)-->
+							
+								<li class="nav-item me-5 ">
+									<a href="/retrieveProfile" class="nav-link d-flex">
+									<img
+									  src="{{ url_for('static', filename='profile_pictures/' + profile_picture) }}"
+									  class="rounded-circle"
+									  height="22"
+									  alt="Profile Picture"
+									  loading="lazy"
+									/>
+									<strong class="d-none d-sm-block ms-1 text-white">{{ username }}</strong>
+								</a>
+						
+							</li>
+								<li class="nav-item me-5">
+									<a class="nav-link" href="/logout"><i class="bi bi-person-circle"></i> Logout</a>
+								</li>
+							</ul>
+						</div>
+					</div>
+					<div class="row col row-cols-3">
+						<div class="col expand_full">
+							<ul class="navbar-nav" id="menuitems_start">
+		
+							</ul>
+						</div>
+						<div class="col expand_full">
+							<ul class="navbar-nav" id="searchbar_center">
+								<li class="nav-item">
+									<form class="" role="search">
+										<div class="input-group">
+										</div>
+									</form>
+								</li>
+							</ul>
+						</div>
+						<div class="col expand_full">
+							<ul class="navbar-nav" id="cart_end">
+								<li class="nav-item">
+									<a class="nav-link me-5"" href="{{url_for('cart_Products')}}"><i class="bi bi-cart"></i> Cart</a>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+		</nav>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+
+		<!-- Start Hero Section -->
+			<div class="hero">
+				<div class="container">
+					<div class="row justify-content-between">
+						<div class="col-lg-5">
+							<div class="intro-excerpt">
+								<h1>About Us</h1>
+								<p class="mb-4">Donec vitae odio quis nisl dapibus malesuada. Nullam ac aliquet velit. Aliquam vulputate velit imperdiet dolor tempor tristique.</p>
+								<p><a href="" class="btn btn-secondary me-2">Shop Now</a><a href="#" class="btn btn-white-outline">Explore</a></p>
+							</div>
+						</div>
+						<div class="col-lg-7">
+							<div class="hero-img-wrap">
+								<img src="{{ url_for('static', filename='couch.png') }}" class="img-fluid">
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		<!-- End Hero Section -->
+
+		
+
+		<!-- Start Why Choose Us Section -->
+		<div class="why-choose-section">
+			<div class="container">
+				<div class="row justify-content-between align-items-center">
+					<div class="col-lg-6">
+						<h2 class="section-title">Why Choose Us</h2>
+						<p>We offer fast and free shipping, an easy shopping experience, 24/7 availability, and hassle-free returns. Enjoy a seamless and customer-focused shopping journey with us.</p>
+
+						<div class="row my-5">
+							<div class="col-6 col-md-6">
+								<div class="feature">
+									<div class="icon">
+										<img src="{{ url_for('static', filename='truck.svg') }}" alt="Image" class="imf-fluid">
+									</div>
+									<h3>Fast &amp; Free Shipping</h3>
+									<p>We ensure your items arrive quickly at no extra cost, providing you with a seamless shopping experience.</p>
+								</div>
+							</div>
+
+							<div class="col-6 col-md-6">
+								<div class="feature">
+									<div class="icon">
+										<img src="{{ url_for('static', filename='bag.svg') }}" alt="Image" class="imf-fluid">
+									</div>
+									<h3>Easy to Shop</h3>
+									<p>Our user-friendly site makes it easy to browse and purchase your favorite recycled and upcycled goods.</p>
+								</div>
+							</div>
+
+							<div class="col-6 col-md-6">
+								<div class="feature">
+									<div class="icon">
+										<img src="{{ url_for('static', filename='support.svg') }}" alt="Image" class="imf-fluid">
+									</div>
+									<h3>24/7 Support</h3>
+									<p>Shop at your convenience with our 24/7 availability, allowing you to make purchases whenever you like.</p>
+								</div>
+							</div>
+
+							<div class="col-6 col-md-6">
+								<div class="feature">
+									<div class="icon">
+										<img src="{{ url_for('static', filename='return.svg') }}" alt="Image" class="imf-fluid">
+									</div>
+									<h3>Hassle Free Returns</h3>
+									<p>Our hassle-free returns policy guarantees a smooth and worry-free shopping experience, ensuring your satisfaction.</p>
+								</div>
+							</div>
+
+						</div>
+					</div>
+
+					<div class="col-lg-5">
+						<div class="img-wrap">
+							<img src="{{ url_for('static', filename='why-choose-us-img.jpg') }}" alt="Image" class="img-fluid">
+						</div>
+					</div>
+
+				</div>
+			</div>
+		</div>
+		<!-- End Why Choose Us Section -->
+
+		<!-- Start Team Section -->
+		<div class="untree_co-section">
+			<div class="container">
+
+				<div class="row mb-5">
+					<div class="col-lg-5 mx-auto text-center">
+						<h2 class="section-title">Our Team</h2>
+					</div>
+				</div>
+
+				<div class="row">
+
+					<!-- Start Column 1 -->
+					<div class="col-12 col-md-6 col-lg-3 mb-5 mb-md-0">
+						<img src="{{ url_for('static', filename='person_1.jpg') }}" class="img-fluid mb-5">
+						<h3 clas><a href="#"><span class="">Zheng</span> Jie</a></h3>
+            <span class="d-block position mb-4">CEO, Founder, Atty.</span>
+            <p>Separated they live in.
+            Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.</p>
+            <p class="mb-0"><a href="#" class="more dark">Learn More <span class="icon-arrow_forward"></span></a></p>
+					</div> 
+					<!-- End Column 1 -->
+
+					<!-- Start Column 2 -->
+					<div class="col-12 col-md-6 col-lg-3 mb-5 mb-md-0">
+						<img src="{{ url_for('static', filename='person_2.jpg') }}" class="img-fluid mb-5">
+
+						<h3 clas><a href="#"><span class="">Andrew</span> Lee</a></h3>
+            <span class="d-block position mb-4">CEO, Founder, Atty.</span>
+            <p>Separated they live in.
+            Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.</p>
+            <p class="mb-0"><a href="#" class="more dark">Learn More <span class="icon-arrow_forward"></span></a></p>
+
+					</div> 
+					<!-- End Column 2 -->
+
+					<!-- Start Column 3 -->
+					<div class="col-12 col-md-6 col-lg-3 mb-5 mb-md-0">
+						<img src="{{ url_for('static', filename='person_3.jpg') }}" class="img-fluid mb-5">
+						<h3 clas><a href="#"><span class="">Xavier</span> Ong</a></h3>
+            <span class="d-block position mb-4">CEO, Founder, Atty.</span>
+            <p>Separated they live in.
+            Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.</p>
+            <p class="mb-0"><a href="#" class="more dark">Learn More <span class="icon-arrow_forward"></span></a></p>
+					</div> 
+					<!-- End Column 3 -->
+
+					<!-- Start Column 4 -->
+					<div class="col-12 col-md-6 col-lg-3 mb-5 mb-md-0">
+						<img src="{{ url_for('static', filename='person_4.jpg') }}" class="img-fluid mb-5">
+
+						<h3 clas><a href="#"><span class="">Ryan</span> Ng</a></h3>
+            <span class="d-block position mb-4">CEO, Founder, Atty.</span>
+            <p>Separated they live in.
+            Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.</p>
+            <p class="mb-0"><a href="#" class="more dark">Learn More <span class="icon-arrow_forward"></span></a></p>
+
+          
+					</div> 
+					<!-- End Column 4 -->
+
+					
+
+				</div>
+			</div>
+		</div>
+		<!-- End Team Section -->
+
+		
+
+		<!-- Start Testimonial Slider -->
+		<div class="testimonial-section before-footer-section">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-7 mx-auto text-center">
+						<h2 class="section-title">Testimonials</h2>
+					</div>
+				</div>
+
+				<div class="row justify-content-center">
+					<div class="col-lg-12">
+						<div class="testimonial-slider-wrap text-center">
+
+							<div id="testimonial-nav">
+								<span class="prev" data-controls="prev"><span class="fa fa-chevron-left"></span></span>
+								<span class="next" data-controls="next"><span class="fa fa-chevron-right"></span></span>
+							</div>
+
+							<div class="testimonial-slider">
+								
+								<div class="item">
+									<div class="row justify-content-center">
+										<div class="col-lg-8 mx-auto">
+
+											<div class="testimonial-block text-center">
+												<blockquote class="mb-5">
+													<p>&ldquo;Donec facilisis quam ut purus rutrum lobortis. Donec vitae odio quis nisl dapibus malesuada. Nullam ac aliquet velit. Aliquam vulputate velit imperdiet dolor tempor tristique. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Integer convallis volutpat dui quis scelerisque.&rdquo;</p>
+												</blockquote>
+
+												<div class="author-info">
+													<div class="author-pic">
+														<img src="{{ url_for('static', filename='person-1.png') }}" alt="Maria Jones" class="img-fluid">
+													</div>
+													<h3 class="font-weight-bold">Maria Jones</h3>
+													<span class="position d-block mb-3">CEO, Co-Founder, XYZ Inc.</span>
+												</div>
+											</div>
+
+										</div>
+									</div>
+								</div> 
+								<!-- END item -->
+
+								<div class="item">
+									<div class="row justify-content-center">
+										<div class="col-lg-8 mx-auto">
+
+											<div class="testimonial-block text-center">
+												<blockquote class="mb-5">
+													<p>&ldquo;Donec facilisis quam ut purus rutrum lobortis. Donec vitae odio quis nisl dapibus malesuada. Nullam ac aliquet velit. Aliquam vulputate velit imperdiet dolor tempor tristique. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Integer convallis volutpat dui quis scelerisque.&rdquo;</p>
+												</blockquote>
+
+												<div class="author-info">
+													<div class="author-pic">
+														<img src="{{ url_for('static', filename='person-1.png') }}" alt="Maria Jones" class="img-fluid">
+													</div>
+													<h3 class="font-weight-bold">Maria Jones</h3>
+													<span class="position d-block mb-3">CEO, Co-Founder, XYZ Inc.</span>
+												</div>
+											</div>
+
+										</div>
+									</div>
+								</div> 
+								<!-- END item -->
+
+								<div class="item">
+									<div class="row justify-content-center">
+										<div class="col-lg-8 mx-auto">
+
+											<div class="testimonial-block text-center">
+												<blockquote class="mb-5">
+													<p>&ldquo;Donec facilisis quam ut purus rutrum lobortis. Donec vitae odio quis nisl dapibus malesuada. Nullam ac aliquet velit. Aliquam vulputate velit imperdiet dolor tempor tristique. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Integer convallis volutpat dui quis scelerisque.&rdquo;</p>
+												</blockquote>
+
+												<div class="author-info">
+													<div class="author-pic">
+														<img src="{{ url_for('static', filename='person-1.png') }}" alt="Maria Jones" class="img-fluid">
+													</div>
+													<h3 class="font-weight-bold">Maria Jones</h3>
+													<span class="position d-block mb-3">CEO, Co-Founder, XYZ Inc.</span>
+												</div>
+											</div>
+
+										</div>
+									</div>
+								</div> 
+								<!-- END item -->
+
+							</div>
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- End Testimonial Slider -->
+
+		
+
+		<!-- Start Footer Section -->
+		<footer class="footer-section">
+			<div class="container relative">
+
+				<div class="sofa-img">
+					<img src="{{ url_for('static', filename='sofa.png') }}" alt="Image" class="img-fluid">
+				</div>
+
+				<div class="map-container">
+        			<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1985.9875402069667!2d103.84919945789695!3d1.3770643990151568!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31da175b55b2e1b5%3A0xd8f57d3af6a96375!2sNanyang%20Polytechnic!5e0!3m2!1sen!2ssg!4v1690112695723!5m2!1sen!2ssg" allowfullscreen></iframe>
+    			</div>
+				<br>
+				<br>
+
+				<div class="row g-5 mb-5">
+					<div class="col-lg-4">
+						<div class="mb-4 footer-logo-wrap"><a href="#" class="footer-logo">Renewify<span>.</span></a></div>
+						<p class="mb-4">Transforming Trash into Treasure - Shop Unique Recycled and Upcycled Goods Today!</p>
+
+						<ul class="list-unstyled custom-social">
+							<li><a href="#"><span class="fa fa-brands fa-facebook-f"></span></a></li>
+							<li><a href="#"><span class="fa fa-brands fa-twitter"></span></a></li>
+							<li><a href="#"><span class="fa fa-brands fa-instagram"></span></a></li>
+							<li><a href="#"><span class="fa fa-brands fa-linkedin"></span></a></li>
+						</ul>
+					</div>
+
+					<div class="col-lg-8">
+						<div class="row links-wrap">
+							<div class="col-6 col-sm-6 col-md-3">
+								<ul class="list-unstyled">
+									<li><a href="#">About us</a></li>
+									<li><a href="#">Services</a></li>
+									<li><a href="#">Blog</a></li>
+									<li><a href="#">Contact us</a></li>
+								</ul>
+							</div>
+
+							<div class="col-6 col-sm-6 col-md-3">
+								<ul class="list-unstyled">
+									<li><a href="#">Support</a></li>
+									<li><a href="#">Knowledge base</a></li>
+									<li><a href="#">Live chat</a></li>
+								</ul>
+							</div>
+
+							<div class="col-6 col-sm-6 col-md-3">
+								<ul class="list-unstyled">
+									<li><a href="#">Jobs</a></li>
+									<li><a href="#">Our team</a></li>
+									<li><a href="#">Leadership</a></li>
+									<li><a href="#">Privacy Policy</a></li>
+								</ul>
+							</div>
+
+							<div class="col-6 col-sm-6 col-md-3">
+								<ul class="list-unstyled">
+									<li><a href="#">Nordic Chair</a></li>
+									<li><a href="#">Kruzo Aero</a></li>
+									<li><a href="#">Ergonomic Chair</a></li>
+								</ul>
+							</div>
+						</div>
+					</div>
+
+				</div>
+
+				<div class="border-top copyright">
+					<div class="row pt-4">
+						<div class="col-lg-6">
+							<p class="mb-2 text-center text-lg-start">Copyright &copy;<script>document.write(new Date().getFullYear());</script>. All Rights Reserved. &mdash; Designed with love by <a href="https://untree.co">Untree.co</a> Distributed By <a hreff="https://themewagon.com">ThemeWagon</a>  <!-- License information: https://untree.co/license/ -->
+            </p>
+						</div>
+
+						<div class="col-lg-6 text-center text-lg-end">
+							<ul class="list-unstyled d-inline-flex ms-auto">
+								<li class="me-4"><a href="#">Terms &amp; Conditions</a></li>
+								<li><a href="#">Privacy Policy</a></li>
+							</ul>
+						</div>
+
+					</div>
+				</div>
+
+			</div>
+		</footer>
+		<!-- End Footer Section -->	
+
+
+		<script src="js/bootstrap.bundle.min.js"></script>
+		<script src="js/tiny-slider.js"></script>
+		<script src="js/custom.js"></script>
+	</body>
+
+</html>
+{% endblock %}

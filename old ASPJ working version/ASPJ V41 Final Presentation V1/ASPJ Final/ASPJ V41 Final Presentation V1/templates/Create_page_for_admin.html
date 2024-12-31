@@ -1,0 +1,111 @@
+<!--<!DOCTYPE html>-->
+<!--<html lang="en">-->
+<!--<head>-->
+<!--    <meta charset="UTF-8">-->
+<!--    <title>Staff Page</title>-->
+<!--    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">-->
+<!--</head>-->
+<!--<body>-->
+<!--    <div class="container">-->
+<!--        <h1 class="mt-5">Staff Page</h1>-->
+<!--        <form action="" method="POST">-->
+<!--            {{ form.hidden_tag() }}-->
+<!--            <div class="form-group">-->
+<!--                {{ form.staff_username.label(class="form-label") }}-->
+<!--                {{ form.staff_username(class="form-control", placeholder="Username") }}-->
+<!--            </div>-->
+<!--            <div class="form-group">-->
+<!--                {{ form.staff_password.label(class="form-label") }}-->
+<!--                {{ form.staff_password(class="form-control", placeholder="Password") }}-->
+<!--            </div>-->
+<!--            <div class="form-group">-->
+<!--                {{ form.phone_no.label(class="form-label") }}-->
+<!--                {{ form.phone_no(class="form-control", placeholder="Phone Number", maxlength="11") }}-->
+<!--            </div>-->
+<!--            <div class="form-group">-->
+<!--                {{ form.organisation.label(class="form-label") }}-->
+<!--                {{ form.organisation(class="form-control", placeholder="Organisation") }}-->
+<!--            </div>-->
+<!--            <div class="form-group">-->
+<!--                {{ form.address.label(class="form-label") }}-->
+<!--                {{ form.address(class="form-control", placeholder="Address") }}-->
+<!--            </div>-->
+<!--            <div class="form-group">-->
+<!--                {{ form.city.label(class="form-label") }}-->
+<!--                {{ form.city(class="form-control", placeholder="City") }}-->
+<!--            </div>-->
+<!--            <div class="form-group">-->
+<!--                {{ form.state.label(class="form-label") }}-->
+<!--                {{ form.state(class="form-control", placeholder="State") }}-->
+<!--            </div>-->
+<!--            <div class="form-group">-->
+<!--                {{ form.country.label(class="form-label") }}-->
+<!--                {{ form.country(class="form-control", placeholder="Country") }}-->
+<!--            </div>-->
+<!--            <div class="form-group">-->
+<!--                {{ form.postalcode.label(class="form-label") }}-->
+<!--                {{ form.postalcode(class="form-control", placeholder="Postal Code") }}-->
+<!--            </div>-->
+<!--            <button type="submit" class="btn btn-primary">Submit</button>-->
+<!--        </form>-->
+<!--    </div>-->
+<!--</body>-->
+<!--</html>-->
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+</head>
+<body>
+    {% extends "base.html" %}
+    {% block title %} Create staff page {% endblock %}
+
+    {% block navbar %}
+    {% include 'includes/_staff_navbar.html' %}
+    {% endblock %}
+    {% block content %}
+    {% from "includes/_formHelper.html" import render_field %}
+
+<!--  <h1>Create Staff Page</h1>-->
+   {% from "includes/_formHelper.html" import render_field %}
+    <form action="" method="POST">
+        {{ form.hidden_tag() }}  <!-- This includes the CSRF token -->
+        <div class="container">
+            {{ render_field(form.staff_username,class="form-control") }}
+            <br>
+            {{ render_field(form.staff_password,class="form-control") }}
+
+            {% with messages = get_flashed_messages(with_categories=true) %}
+            {% for category, message in messages %}
+                {% if category == 'password_error' %}
+                    <div class="alert alert-danger">{{ message }}</div>
+                {% endif %}
+            {% endfor %}
+        {% endwith %}
+
+            <br>
+            {{ render_field(form.phone_no,class="form-control") }}
+            <br>
+            {{ render_field(form.address,class="form-control") }}
+            <br>
+            {{ render_field(form.city,class="form-control") }}
+            <br>
+            {{ render_field(form.state,class="form-control") }}
+            <br>
+            {{ render_field(form.country,class="form-control") }}
+            <br>
+            {{ render_field(form.postalcode,class="form-control") }}
+        </div>
+        <div class="container">
+            <br>
+            <input type="submit" value="Submit" class="btn btn-primary"/>
+            <input type="button" value="Cancel" onclick="history.back()" class="btn btn-light"/>
+        </div>
+    </form>
+    {% endblock %}
+</body>
+</html>

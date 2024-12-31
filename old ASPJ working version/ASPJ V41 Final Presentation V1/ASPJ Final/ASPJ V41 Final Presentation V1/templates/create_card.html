@@ -1,0 +1,483 @@
+{% extends "base.html" %}
+{% block title %} Cart Page {% endblock %}
+
+{% block content %}
+{% from "includes/_formHelper.html" import render_field %}
+<style>
+    .form-control:focus {
+        outline: none;
+        box-shadow: none;
+    }
+    #card-number-input:focus {
+        outline: none;
+        box-shadow: none;
+    }
+    #month-input:focus {
+        outline: none;
+        box-shadow: none;
+    }
+    #year-input:focus {
+        outline: none;
+        box-shadow: none;
+    }
+    #cvc-input:focus {
+        outline: none;
+        box-shadow: none;
+    }
+    .error-message-cvc {
+        color: red;
+        font-size: 0.8rem;
+        padding-left: 1em;
+    }
+    .error-message-expiry {
+        color: red;
+        font-size: 0.8rem;
+        padding-left: 1em;
+    }
+    .error-message {
+        color: red;
+        font-size: 0.8rem;
+        padding-left: 1em;
+    }
+    .success {
+        border-color: #09c372;
+    }
+    .error {
+  border: 1px solid red;
+}
+</style>
+<script src="https://js.stripe.com/v3/"></script>
+<script src="{{ url_for('static', filename='create_card.js') }}" defer></script>
+<a href="/retrieveProfile" class="btn btn-success active">Account Details</a>
+<a href="/manage-card" class="btn btn-success active">Saved Cards</a>
+<form action="/create-card" method="POST" id="payment-form">
+    {{ form.hidden_tag() }}  <!-- This includes the CSRF token -->
+
+    <div class="form-row">
+        <input type="hidden"  id="test" value="{{ existing_last_4 }}">
+
+        <div>Card Information</div>
+        <div> 
+            {{ form.card_number(id="card-number-input") }} 
+            <div id="error-message-id"></div> 
+        </div>
+        <br>
+        <div class="input-container">
+            {{ form.month(id='month-input', placeholder='MM', maxlength='2') }}
+            <span>/</span>
+            {{ form.year(id='year-input', placeholder='YY', maxlength='2') }}
+            <div id="error-message-id-expiry"></div>
+        </div>
+        <br>
+        <div> 
+            {{ form.cvc(id='cvc-input', maxlength='3') }} 
+            <div id="error-message-id-cvc"></div> 
+        </div>
+      <!-- Used to display Element errors. -->
+      <div id="card-errors" role="alert"></div>
+    </div>
+    <input id="submit-button" type="submit" value="Submit" class="btn btn-primary">
+  </form>
+
+<script>
+ var luhnChk = (function (arr) {
+    return function (ccNum) {
+        var 
+            len = ccNum.length,
+            bit = 1,
+            sum = 0,
+            val;
+
+        while (len) {
+            val = parseInt(ccNum.charAt(--len), 10);
+            sum += (bit ^= 1) ? arr[val] : val;
+        }
+
+        return sum && sum % 10 === 0;
+    };
+}([0, 2, 4, 6, 8, 1, 3, 5, 7, 9]));
+
+const myInput = document.getElementById('card-number-input');
+myInput.addEventListener('input', () => {
+    var error_message_id = document.getElementById('error-message-id')
+    var last_4
+    if (myInput.value.length == 16 && myInput.value != '2333333333333333' && luhnChk(myInput.value) == true) {
+        console.log(luhnChk(myInput.value));
+        if (myInput.classList.contains("error")) {
+            myInput.classList.remove("error")
+            myInput.classList.add("success")
+            console.log('overwritten')
+            console.log(last_4)
+            if (error_message_id.classList.contains('error-message')) {
+                console.log('contains')
+                error_message_id.classList.remove('error-message');
+                error_message_id.textContent = '';
+
+                
+            }
+        }
+        else {
+            myInput.classList.add("success")
+            console.log('just')
+            if (error_message_id.classList.contains('error-message')) {
+                error_message_id.classList.remove('error-message');
+                error_message_id.textContent = '';
+
+            }
+            else {
+                document.getElementsByClassName('error-message')[0].textContent = '';
+            }
+
+        }
+    }
+    if (myInput.value.length != 16 || myInput.value == '2333333333333333' || luhnChk(myInput.value) == false) {
+        if (myInput.classList.contains("success")) {
+            myInput.classList.remove("success")
+            myInput.classList.add("error")
+            if (error_message_id.classList.contains('error-message')) {
+                console.log('nothing')
+                var last_4 = ''
+            }
+            else {
+                error_message_id.classList.add('error-message')
+                document.getElementsByClassName('error-message')[0].textContent = '* Please Enter a Valid Credit Card Number';
+                var last_4 = ''
+            }
+        }
+        else {
+            myInput.classList.add("error")
+            console.log('error')
+            if (error_message_id.classList.contains('error-message')) {
+                console.log('nothing')
+                var last_4 = ''
+            }
+            else {
+                error_message_id.classList.add('error-message')
+                document.getElementsByClassName('error-message')[0].textContent = '* Please Enter a Valid Credit Card Number';
+                var last_4 = ''
+            }
+        }
+    }
+})
+
+const currentDate = new Date();
+const currentMonth = currentDate.getMonth() + 1; // JavaScript months are 0-based
+var currentYear = String(currentDate.getFullYear());
+var currentYear = currentYear.slice(-2);
+const monthInput = document.getElementById('month-input');
+const yearInput = document.getElementById('year-input');
+console.log(currentYear)
+monthInput.addEventListener('input', handleInput);
+yearInput.addEventListener('input', handleInput);
+function handleInput() {
+  // Your code to handle input changes
+  var error_message_id_expiry = document.getElementById('error-message-id-expiry')
+    if (monthInput.value > 0 && monthInput.value < 13 && isNaN(parseInt(monthInput.value)) == false && yearInput.value > 0 && isNaN(parseInt(yearInput.value)) == false) {
+        if ((monthInput.value >= currentMonth && yearInput.value >= currentYear) || (yearInput.value > currentYear)) {
+            if (monthInput.classList.contains("error")) {
+                monthInput.classList.remove("error")
+                monthInput.classList.add("success")
+                console.log('overwritten')
+                if (error_message_id_expiry.classList.contains('error-message-expiry')) {
+                    console.log('contains')
+                    error_message_id_expiry.classList.remove('error-message-expiry');
+                    error_message_id_expiry.textContent = '';
+                }
+            }
+            else {
+                monthInput.classList.add("success")
+                console.log('just')
+                if (error_message_id_expiry.classList.contains('error-message-expiry')) {
+                    error_message_id_expiry.classList.remove('error-message-expiry');
+                    error_message_id_expiry.textContent = '';
+                }
+                else {
+                    document.getElementsByClassName('error-message-expiry')[0].textContent = '';
+                }
+
+            }
+            // yearinput
+            if (yearInput.classList.contains("error")) {
+                yearInput.classList.remove("error")
+                yearInput.classList.add("success")
+                console.log('overwritten')
+                if (error_message_id_expiry.classList.contains('error-message-expiry')) {
+                    console.log('contains')
+                    error_message_id_expiry.classList.remove('error-message-expiry');
+                    error_message_id_expiry.textContent = '';
+                }
+            }
+            else {
+                yearInput.classList.add("success")
+                console.log('just')
+                if (error_message_id_expiry.classList.contains('error-message-expiry')) {
+                    error_message_id_expiry.classList.remove('error-message-expiry');
+                    error_message_id_expiry.textContent = '';
+                }
+                else {
+                    document.getElementsByClassName('error-message-expiry')[0].textContent = '';
+                }
+
+            }
+        }
+    }
+
+    if (yearInput.value < currentYear || (yearInput.value == currentYear && monthInput.value < currentMonth) || monthInput.value <= 0 || monthInput.value >= 13 || isNaN(parseInt(monthInput.value)) == true || monthInput.value.length < 2 || yearInput.value <= 0 || isNaN(parseInt(yearInput.value)) == true) {
+        console.log('dw')
+        if (monthInput.classList.contains("success")) {
+            monthInput.classList.remove("success")
+            monthInput.classList.add("error")
+            if (error_message_id_expiry.classList.contains('error-message-expiry')) {
+                console.log('nothing')
+            }
+            else {
+                error_message_id_expiry.classList.add('error-message-expiry')
+                document.getElementsByClassName('error-message-expiry')[0].textContent = '* Please Enter a Valid Expiry Date';
+            }
+        }
+        else {
+            monthInput.classList.add("error")
+            console.log('error')
+            if (error_message_id_expiry.classList.contains('error-message-expiry')) {
+                console.log('nothing')
+            }
+            else {
+                error_message_id_expiry.classList.add('error-message-expiry')
+                document.getElementsByClassName('error-message-expiry')[0].textContent = '* Please Enter a Valid Expiry Date';
+            }
+        }
+        // yearinput
+        if (yearInput.classList.contains("success")) {
+            yearInput.classList.remove("success")
+            yearInput.classList.add("error")
+            if (error_message_id_expiry.classList.contains('error-message-expiry')) {
+                console.log('nothing')
+            }
+            else {
+                error_message_id_expiry.classList.add('error-message-expiry')
+                document.getElementsByClassName('error-message-expiry')[0].textContent = '* Please Enter a Valid Expiry Date';
+            }
+        }
+        else {
+            yearInput.classList.add("error")
+            console.log('error')
+            if (error_message_id_expiry.classList.contains('error-message-expiry')) {
+                console.log('nothing')
+            }
+            else {
+                error_message_id_expiry.classList.add('error-message-expiry')
+                document.getElementsByClassName('error-message-expiry')[0].textContent = '* Please Enter a Valid Expiry Date';
+            }
+        }
+    }
+}
+
+const cvcInput = document.getElementById('cvc-input');
+cvcInput.addEventListener('input', () => {
+    var error_message_id_cvc = document.getElementById('error-message-id-cvc')
+    if (cvcInput.value.length == 3 && isNaN(parseInt(cvcInput.value)) == false) {
+        if (cvcInput.classList.contains("error")) {
+            cvcInput.classList.remove("error")
+            cvcInput.classList.add("success")
+            console.log('overwritten')
+            if (error_message_id_cvc.classList.contains('error-message-cvc')) {
+                console.log('contains')
+                error_message_id_cvc.classList.remove('error-message-cvc');
+                error_message_id_cvc.textContent = '';
+            }
+        }
+        else {
+            cvcInput.classList.add("success")
+            console.log('just')
+            if (error_message_id_cvc.classList.contains('error-message-cvc')) {
+                error_message_id_cvc.classList.remove('error-message-cvc');
+                error_message_id_cvc.textContent = '';
+            }
+            else {
+                document.getElementsByClassName('error-message-cvc')[0].textContent = '';
+            }
+
+        }
+    }
+    if (cvcInput.value.length != 3 || isNaN(parseInt(cvcInput.value)) == true) {
+        if (cvcInput.classList.contains("success")) {
+            cvcInput.classList.remove("success")
+            cvcInput.classList.add("error")
+            if (error_message_id_cvc.classList.contains('error-message-cvc')) {
+                console.log('nothing')
+            }
+            else {
+                error_message_id_cvc.classList.add('error-message-cvc')
+                document.getElementsByClassName('error-message-cvc')[0].textContent = '* Please Enter a CVC';
+            }
+        }
+        else {
+            cvcInput.classList.add("error")
+            console.log('error')
+            if (error_message_id_cvc.classList.contains('error-message-cvc')) {
+                console.log('nothing')
+            }
+            else {
+                error_message_id_cvc.classList.add('error-message-cvc')
+                document.getElementsByClassName('error-message-cvc')[0].textContent = '* Please Enter a CVC';
+            }
+        }
+    }
+
+})
+
+const validate_on_submit = document.getElementById("submit-button")
+var test = document.getElementById('test').value
+console.log(test)
+
+document.getElementById('payment-form').addEventListener('submit', function(event) {
+    var last_4 = myInput.value.slice(-4)
+    var valid = 'true'
+    if (monthInput.classList.contains("error") || yearInput.classList.contains("error") || cvcInput.classList.contains("error") || myInput.classList.contains("error")) {
+        event.preventDefault(); // Prevent form from submitting
+    alert('Please Enter Valid Details');
+    var valid = 'false'
+} else {
+    if (test.includes(last_4)) {
+        event.preventDefault(); // Prevent form from submitting
+        alert('You Tried to add a card that already exists');
+        var valid = 'false'
+    }
+    if (valid == 'true'){
+        alert('Card successfully added')
+        setTimeout(function() {
+            window.location.href = '{{ url_for("cart_Products") }}'; // Replace with your success page URL
+        }, 100);
+    }
+}
+
+
+})
+  // JavaScript code to handle alert display
+  document.addEventListener('DOMContentLoaded', function() {
+      var existingentry = document.getElementById('existing_entry');
+      if (existingentry) {
+          alert('You Tried to add a card that already exists.');
+      }
+  });
+
+  document.addEventListener('DOMContentLoaded', function() {
+      var allerrors = document.getElementById('all_errors');
+      if (allerrors) {
+          alert('Please Enter a valid card.');
+      }
+  });
+  document.addEventListener('DOMContentLoaded', function() {
+      var sucessmessage = document.getElementById('success');
+      if (sucessmessage) {
+          alert('Card Saved Successfully');
+      }
+  });
+// monthInput.addEventListener('input', () => {
+//     var error_message_id_expiry = document.getElementById('error-message-id-expiry')
+//     if (monthInput.value >= currentMonth && monthInput.value > 0 && monthInput.value < 13 && isNaN(parseInt(monthInput.value)) == false ) {
+//         if (monthInput.classList.contains("error")) {
+//             monthInput.classList.remove("error")
+//             monthInput.classList.add("success")
+//             console.log('overwritten')
+//             if (error_message_id_expiry.classList.contains('error-message-expiry')) {
+//                 console.log('contains')
+//                 error_message_id_expiry.classList.remove('error-message-expiry');
+//                 error_message_id_expiry.textContent = '';
+//             }
+//         }
+//         else {
+//             monthInput.classList.add("success")
+//             console.log('just')
+//             if (error_message_id_expiry.classList.contains('error-message-expiry')) {
+//                 error_message_id_expiry.classList.remove('error-message-expiry');
+//                 error_message_id_expiry.textContent = '';
+//             }
+//             else {
+//                 document.getElementsByClassName('error-message-expiry')[0].textContent = '';
+//             }
+
+//         }
+//     }
+//     if (monthInput.value < currentMonth || monthInput.value <= 0 || monthInput.value >= 13 || isNaN(parseInt(monthInput.value)) == true || monthInput.value.length < 2) {
+//         if (monthInput.classList.contains("success")) {
+//             monthInput.classList.remove("success")
+//             monthInput.classList.add("error")
+//             if (error_message_id_expiry.classList.contains('error-message-expiry')) {
+//                 console.log('nothing')
+//             }
+//             else {
+//                 error_message_id_expiry.classList.add('error-message-expiry')
+//                 document.getElementsByClassName('error-message-expiry')[0].textContent = '* Please Enter a Valid Credit Card Number';
+//             }
+//         }
+//         else {
+//             monthInput.classList.add("error")
+//             console.log('error')
+//             if (error_message_id_expiry.classList.contains('error-message-expiry')) {
+//                 console.log('nothing')
+//             }
+//             else {
+//                 error_message_id_expiry.classList.add('error-message-expiry')
+//                 document.getElementsByClassName('error-message-expiry')[0].textContent = '* Please Enter a Valid Credit Card Number';
+//             }
+//         }
+//     }
+// })
+
+// yearInput.addEventListener('input', () => {
+//     var error_message_id_expiry = document.getElementById('error-message-id-expiry')
+//     if (monthInput.value >= currentMonth && monthInput.value > 0 && monthInput.value < 13 && isNaN(parseInt(monthInput.value)) == false ) {
+//         if (monthInput.classList.contains("error")) {
+//             monthInput.classList.remove("error")
+//             monthInput.classList.add("success")
+//             console.log('overwritten')
+//             if (error_message_id_expiry.classList.contains('error-message-expiry')) {
+//                 console.log('contains')
+//                 error_message_id_expiry.classList.remove('error-message-expiry');
+//                 error_message_id_expiry.textContent = '';
+//             }
+//         }
+//         else {
+//             monthInput.classList.add("success")
+//             console.log('just')
+//             if (error_message_id_expiry.classList.contains('error-message-expiry')) {
+//                 error_message_id_expiry.classList.remove('error-message-expiry');
+//                 error_message_id_expiry.textContent = '';
+//             }
+//             else {
+//                 document.getElementsByClassName('error-message-expiry')[0].textContent = '';
+//             }
+
+//         }
+//     }
+//     if (monthInput.value < currentMonth || monthInput.value <= 0 || monthInput.value >= 13 || isNaN(parseInt(monthInput.value)) == true || monthInput.value.length < 2) {
+//         if (monthInput.classList.contains("success")) {
+//             monthInput.classList.remove("success")
+//             monthInput.classList.add("error")
+//             if (error_message_id_expiry.classList.contains('error-message-expiry')) {
+//                 console.log('nothing')
+//             }
+//             else {
+//                 error_message_id_expiry.classList.add('error-message-expiry')
+//                 document.getElementsByClassName('error-message-expiry')[0].textContent = '* Please Enter a Valid Credit Card Number';
+//             }
+//         }
+//         else {
+//             monthInput.classList.add("error")
+//             console.log('error')
+//             if (error_message_id_expiry.classList.contains('error-message-expiry')) {
+//                 console.log('nothing')
+//             }
+//             else {
+//                 error_message_id_expiry.classList.add('error-message-expiry')
+//                 document.getElementsByClassName('error-message-expiry')[0].textContent = '* Please Enter a Valid Credit Card Number';
+//             }
+//         }
+//     }
+// })
+  
+</script>
+
+
+{% endblock %}

@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block title %} Cart Page {% endblock %}
+
+{% block content %}
+{% from "includes/_formHelper.html" import render_field %}
+<script src="https://js.stripe.com/v3/"></script>
+<script src="{{ url_for('static', filename='create_address.js') }}" defer></script>
+<a href="/retrieveProfile" class="btn btn-success active">Account Details</a>
+<a href="/manage-address" class="btn btn-success active">Saved Addresses</a>
+
+<form id="address-form" action="/create-address" method="POST">
+    <h3>Address</h3>
+    <div id="address-element">
+      <!-- Elements will create form elements here -->
+    </div>
+    <button type="submit">Submit Payment</button>
+  </form>
+{% endblock %}

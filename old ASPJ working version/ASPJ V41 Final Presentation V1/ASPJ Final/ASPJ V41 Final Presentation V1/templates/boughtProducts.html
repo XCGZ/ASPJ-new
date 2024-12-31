@@ -1,0 +1,322 @@
+{% extends "base.html" %}
+{% block title %} Products page {% endblock %}
+
+
+{% block content %}
+{% from "includes/_formHelper.html" import render_field %}
+<script src="https://js.stripe.com/v3/"></script>
+<section class="h-100 h-custom">
+  <div class="container py-5 h-100">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col-12">
+        <div class="card card-registration card-registration-2" style="border-radius: 15px;">
+          <div class="col-lg-12">
+            <div class="p-5">
+              <div class="d-flex justify-content-between align-items-center mb-5">
+                <h1 class="fw-bold mb-0 text-black">Purchase History</h1>
+                <h6 class="mb-0 text-muted">{{session_bought_products | length}} Items</h6>
+              </div>
+
+              <hr class="my-4">
+                <!-- Items -->
+                {% if session_bought_products == {} %}
+                {% for session_id, items_list in session_bought_products.items() %}
+                <div class="mb-4 border rounded-3">
+                  <div style="background-color: #f0f2f2; margin: 0; padding-bottom: 20px !important; width: 100%; border-bottom-color: #565959;"
+                    class="border-bottom  rounded-top-3">
+                    <div class="row" style="padding-top: 1em;">
+                      <div class="col-6" style="padding-left: 3em;">
+                        {% if items_list[0]['order_date'] %}
+                        <h6 style="font-size: 0.9rem;color: #565959; line-height: 20px; text-transform: uppercase;">
+                          Order Placed
+                          <br>
+                          <span style="font-size: 1rem;">
+                            {{ items_list[0]['order_date'] }} </span>
+                        </h6>
+                        {% endif %}
+                      </div>
+                      <div class="col-6">
+                        
+                      </div>
+                    </div>
+
+
+
+
+                    <div class="row" style="padding-top: 1em;">
+                      <div class="col-6" style="padding-left: 3em;">
+                        {% if items_list[0]['arrive_date'] %}
+                        <h6 style="font-size: 0.9rem;color: #565959; line-height: 20px; text-transform: uppercase;">
+                          Delivered by<br><span style="text-transform: uppercase; font-size: 1rem;">{{
+                            items_list[0]['arrive_date'] }} </span></h6>
+                        {% endif %}
+
+                      </div>
+                      <div class="col-6">
+
+                        <h5 id="" style="font-size: 0.9rem; color: #565959; line-height: 20px; ">{{ items_list|length }}
+                          Items</h5>
+                      </div>
+                    </div>
+                    <div class="row" style="padding-top: 1em;">
+                      <div class="col-6" style="padding-left: 3em;">
+                        {% set total_price = 0 %}
+                        {% set last_item = items_list[-1] %}
+
+                        {% if last_item['total_price'] %}
+                        {% set total_price = last_item['total_price'] %}
+                        <h6 style="font-size: 0.9rem;color: #565959; line-height: 20px; text-transform: uppercase;">
+                          Total Price<br>
+                          <span style="text-transform: uppercase; font-size: 1rem;">${{ "%0.2f" | format(total_price | float) }} </span>
+                        </h6>
+                        {% endif %}
+                      </div>
+                    </div>
+                    <div class="row" style="padding-top: 1em;">
+                      <div class="col-6" style="padding-left: 3em;">
+                        <h6 id="{{ session_id }}"
+                          style="font-size: 0.9rem;color: #565959; line-height: 20px; text-transform: uppercase;"></h6>
+
+                      </div>
+                    </div>
+
+                  </div>
+
+                  {% for item in items_list %}
+                  <div class="row d-flex justify-content-between align-items-center" style="padding: 10px;">
+                    <div class="col-md-2 col-lg-2 col-xl-2">
+                      <img src="{{item['image']}}" class="img-fluid rounded-3" alt="{{ item['name'] }}">
+                    </div>
+                    <div class="col-md-3 col-lg-3 col-xl-3">
+                      <h6 class="text-muted"></h6>
+                      <h6 class="text-black mb-0">Name: {{ item['name'] }}</h6>
+                    </div>
+                    <div class="col-md-3 col-lg-3 col-xl-2 d-flex">
+                        <h6 class="mb-0">Qty: {{ item['quantity'] }}</h6>
+                    </div>
+                    <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
+                      <h6 class="mb-0">Amount Total: ${{ "%0.2f" | format(item['price'] | float) }}</h6>
+                    </div>
+                    <div class="col-md-1 col-lg-1 col-xl-1 text-end">
+                      <a href="#!" class="text-muted"><i class="fas fa-times"></i></a>
+                    </div>
+                  </div>
+                  <hr class="my-4" style="color: #565959;">
+                  {% endfor %}
+                  <div>
+
+                    <button type="button" name="" value="" class="btn btn-primary"
+                      onclick="updateContent('{{ session_id }}')">Order Received</button>
+                  </div>
+                </div>
+                {% endfor %}
+
+                {% else %}
+
+                {% for session_id, items_list in session_bought_products.items() %}
+                  {% if items_list %}
+                <div class="mb-4 border rounded-3">
+                  <div style="background-color: #f0f2f2; margin: 0; padding-bottom: 20px !important; width: 100%; border-bottom-color: #565959;"
+                    class="border-bottom  rounded-top-3">
+                    <div class="row" style="padding-top: 1em;">
+                      <div class="col-6" style="padding-left: 3em;">
+                        {% if items_list[0]['order_date'] %}
+                        <h6 style="font-size: 0.9rem;color: #565959; line-height: 20px; text-transform: uppercase;">
+                          Order Placed
+                          <br>
+                          <span style="font-size: 1rem;">
+                            {{ items_list[0]['order_date'] }} </span>
+                        </h6>
+                        {% endif %}
+                      </div>
+                      <div class="col-6">
+                        
+                      </div>
+                    </div>
+
+
+
+
+                    <div class="row" style="padding-top: 1em;">
+                      <div class="col-6" style="padding-left: 3em;">
+                        {% if items_list[0]['arrive_date'] %}
+                        <h6 style="font-size: 0.9rem;color: #565959; line-height: 20px; text-transform: uppercase;">
+                          Delivered by<br><span style="text-transform: uppercase; font-size: 1rem;">{{
+                            items_list[0]['arrive_date'] }} </span></h6>
+                        {% endif %}
+                      
+
+                      </div>
+                      <div class="col-6">
+
+                        <h5 id="" style="font-size: 0.9rem; color: #565959; line-height: 20px; ">{{ items_list|length }}
+                          Items</h5>
+                      </div>
+                    </div>
+                    <div class="row" style="padding-top: 1em;">
+                      <div class="col-6" style="padding-left: 3em;">
+                        {% set total_price = 0 %}
+                        {% set last_item = items_list[-1] %}
+
+                        {% if last_item['total_price'] %}
+                        {% set total_price = last_item['total_price'] %}
+                        <h6 style="font-size: 0.9rem;color: #565959; line-height: 20px; text-transform: uppercase;">
+                          Total Price<br>
+                          <span style="text-transform: uppercase; font-size: 1rem;">${{ "%0.2f" | format(total_price | float) }} </span>
+                        </h6>
+                        {% endif %}
+
+                        
+                      </div>
+                    </div>
+                    <div class="row" style="padding-top: 1em;">
+                      <div class="col-6" style="padding-left: 3em;">
+                        <h6 id="{{ session_id }}"
+                          style="font-size: 0.9rem;color: #565959; line-height: 20px; text-transform: uppercase;"></h6>
+
+                      </div>
+                    </div>
+
+                  </div>
+                  
+
+                  {% for item in items_list %}
+                  <div class="row d-flex justify-content-between align-items-center" style="padding: 10px;">
+                    <div class="col-md-2 col-lg-2 col-xl-2">
+                      <img src="{{item['image']}}" class="img-fluid rounded-3" alt="{{ item['name'] }}">
+                    </div>
+                    <div class="col-md-3 col-lg-3 col-xl-3">
+                      <h6 class="text-muted"></h6>
+                      <h6 class="text-black mb-0">Name: {{ item['name'] }}</h6>
+                    </div>
+                    <div class="col-md-3 col-lg-3 col-xl-2 d-flex">
+                        <h6 class="mb-0">Qty: {{ item['quantity'] }}</h6>
+                    </div>
+                    <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
+                      <h6 class="mb-0">Amount Total: ${{ "%0.2f" | format(item['price'] | float) }}</h6>
+                    </div>
+                    <div class="col-md-1 col-lg-1 col-xl-1 text-end">
+                      <a href="#!" class="text-muted"><i class="fas fa-times"></i></a>
+                    </div>
+                  </div>
+                  <hr class="my-4" style="color: #565959;">
+                  {% endfor %}
+                  <div>
+
+                    <button type="button" name="" value="" class="btn btn-primary"
+                      onclick="updateContent('{{ session_id }}')">Order Received</button>
+                  </div>
+                </div>
+                {% endif %}
+                {% endfor %}
+                {% endif %}
+
+
+                <!-- Items end -->
+
+        <!-- Button to Open the Modal -->
+        {% if session_bought_products != {} %}
+        <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#myModal_">
+            Delete
+        </button>
+
+        {% endif %}
+
+
+<!-- The Modal -->
+<div class="modal" id="myModal_">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <h4 class="modal-title">Delete Confirmation</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <!-- Modal body -->
+            <div class="modal-body">
+                Are you sure you want to delete your cart history?
+            </div>
+            <!-- Modal footer -->
+            <div class="modal-footer">
+                <form action="{{url_for('bought_products')}}" method="POST">
+                    <input type="submit" value="Delete Cart History" name="Remove_history" class="btn btn-danger">
+                </form>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+                <div class="pt-5">
+                  <h6 class="mb-0"><a href="{{ url_for('products') }}" class="text-body"><i class="fas fa-long-arrow-alt-left me-2"></i>Back
+                      to shop</a></h6>
+                </div>
+            </div>
+          </div>
+
+
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+  </div>
+  </div>
+</section>
+{% block javascript %}
+<script>
+  function updateContent(sessionId) {
+    // Get the current date
+    var today = new Date();
+    var todayFormatted = new Date(today.getTime() - today.getTimezoneOffset() * 60000).toISOString().slice(0, 10);
+
+    // Update the content in the DOM
+    document.getElementById(sessionId).innerHTML = 'Item Delivered' + '<br>' + todayFormatted;
+
+    // Store the information in local storage
+    localStorage.setItem(sessionId, 'Item Delivered' + '<br>' + todayFormatted);
+  }
+
+  function retrieveStoredData() {
+  '{% for session_id, _ in session_bought_products.items() %}'
+    var storedData = localStorage.getItem('{{ session_id }}');
+    if (storedData) {
+      document.getElementById('{{ session_id }}').innerHTML = storedData;
+    }
+  '{% endfor %}'
+}
+
+// Call the function when the page loads
+window.onload = retrieveStoredData;
+
+
+
+  //   function updateContent(sessionId) {
+  //   // Get the current date
+  //   var today = new Date();
+  //   var todayFormatted = today.toISOString().slice(0, 10);
+
+  //   // Update the content in the DOM
+  //   document.getElementById(sessionId).innerHTML = 'Delivered ' + todayFormatted;
+
+  //   // Store the information in local storage
+  //   localStorage.setItem(sessionId, 'Delivered ' + todayFormatted);
+  // }
+
+  // // Function to retrieve stored data from local storage on page load
+  // function retrieveStoredData() {
+  //   '{% for session_id, _ in session_bought_products.items() %}'
+  //     var storedData = localStorage.getItem('{{ session_id }}');
+  //     if (storedData) {
+  //       document.getElementById('{{ session_id }}').innerHTML = storedData;
+  //     }
+  //   '{% endfor %}'
+  // }
+
+  // // Call the function when the page loads
+  // window.onload = retrieveStoredData;
+</script>
+{% endblock %}
+
+{% endblock %}

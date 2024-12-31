@@ -1,0 +1,15 @@
+2024-07-29 22:22:11,886 Log_ID: [1] INFO __init__.py : Email: chick@gmail.com | Last 4 Digits (4242) Has created a new card.
+2024-07-29 22:23:45,712 Log_ID: [2] INFO __init__.py : Email: dogs@gmail.com | Last 4 Digits (4242) Has created a new card.
+2024-07-30 18:43:05,813 Log_ID: [1] INFO __init__.py : Email: leezhengjie05@gmail.com | Last 4 Digits (4242) Has created a new card.
+2024-07-30 18:45:08,286 Log_ID: [2] INFO __init__.py : Email: leezhengjie05@gmail.com | Last 4 Digits (8210) Has created a new card.
+2024-07-30 18:45:30,076 Log_ID: [3] WARNING __init__.py : Email: leezhengjie05@gmail.com | Last 4 Digits (8210) Has tried to create a card that already exists.
+2024-07-30 18:46:12,343 Log_ID: [4] WARNING __init__.py : Email: leezhengjie05@gmail.com | Last 4 Digits (8210) Has tried to create a card that already exists.
+2024-07-30 18:46:26,191 Log_ID: [5] INFO __init__.py : Email: leezhengjie05@gmail.com | Last 4 Digits (3222) Has created a new card.
+2024-07-30 18:46:28,313 Log_ID: [6] WARNING __init__.py : Email: leezhengjie05@gmail.com | Last 4 Digits (3222) Has tried to create a card that already exists.
+2024-07-30 18:48:53,993 Log_ID: [7] WARNING __init__.py : Email: leezhengjie05@gmail.com | Last 4 Digits (3222) Has tried to create a card that already exists.
+2024-07-30 18:49:15,110 Log_ID: [8] INFO __init__.py : Email: leezhengjie05@gmail.com | Last 4 Digits (5556) Has created a new card.
+2024-07-30 18:49:20,083 Log_ID: [9] WARNING __init__.py : Email: leezhengjie05@gmail.com | Last 4 Digits (5556) Has tried to create a card that already exists.
+2024-07-30 18:50:18,387 Log_ID: [10] INFO __init__.py : Email: leezhengjie05@gmail.com | Last 4 Digits (1117) Has created a new card.
+2024-07-30 18:50:24,824 Log_ID: [11] WARNING __init__.py : Email: leezhengjie05@gmail.com | Last 4 Digits (1117) Has tried to create a card that already exists.
+2024-07-30 18:53:35,714 Log_ID: [12] INFO __init__.py : Email: leezhengjie05@gmail.com | Last 4 Digits (1113) Has created a new card.
+2024-07-30 18:54:22,246 Log_ID: [13] INFO __init__.py : Email: leezhengjie05@gmail.com | Last 4 Digits (0004) Has created a new card.

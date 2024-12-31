@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+{% block title %} Login {% endblock %}
+
+{% block navbar %}
+
+{% endblock %}
+
+{% block content %}
+{% from "includes/_formHelper.html" import render_field %}
+
+<link type="text/css" href="{{ url_for('static',filename='Css/login.css') }}" rel="stylesheet">
+
+<div class="loginContainer">
+
+    <form class="form" id="login" method="POST" action="">
+        <input type="hidden" name="csrf_token" value="{{ csrf_token }}">
+        <h1 class="form__title">Login</h1>
+
+        <div class="form__input-group">
+            {{ render_field(form.LoginEmail, class="form__input") }}
+        </div>
+
+        <div class="form__input-group">
+            {{ render_field(form.LoginPassword, class="form__input") }}
+        </div>
+
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% for category, message in messages %}
+                {% if category == 'danger' %}
+                    <div class="alert alert-danger">{{ message }}</div>
+                {% endif %}
+            {% endfor %}
+        {% endwith %}
+
+
+        <div class="form__input-group">
+            {{ render_field(form.recaptcha) }}
+        </div>
+
+        <input class="form__button" type="submit" value="Submit"/><br>
+
+        <p class="form__text">
+            <a class="form__link" href="/signup">Don't have an account? Create account</a>
+        </p>
+
+        <p class="form__text">
+            <a class="form__link" href="{{ url_for('customer_login') }}">Click here for staff to sign in</a>
+        </p>
+
+        <p class="form__text">
+            <a class="form__link" href="/forgotPassword">Forgot your password? Reset here</a>
+        </p>
+
+    </form>
+</div>
+<script type="text/javascript" src="{{ url_for('static',filename='Js/login.js') }}"></script>
+{% endblock %}

@@ -1,0 +1,27 @@
+{
+    "sqltools.connections": [
+        {
+            "mysqlOptions": {
+                "authProtocol": "default",
+                "enableSsl": "Disabled"
+            },
+            "previewLimit": 50,
+            "server": "localhost",
+            "port": 5000,
+            "driver": "MySQL",
+            "name": "MYSQL LOCAL",
+            "database": "demo",
+            "username": "root",
+            "password": "password",
+            "connectionTimeout": 300
+        }
+    ],
+    "workbench.colorCustomizations": {
+        "list.inactiveSelectionBackground": "#fffb17",
+
+    },
+    "editor.tokenColorCustomizations": {
+        "comments": "",
+        "textMateRules": []
+    }
+}

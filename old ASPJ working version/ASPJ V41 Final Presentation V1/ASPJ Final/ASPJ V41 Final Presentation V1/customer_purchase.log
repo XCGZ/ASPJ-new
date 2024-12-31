@@ -1,0 +1,269 @@
+2024-07-28 00:56:13,440 Log_ID: [1] INFO __init__.py : Status: succeeded | Transaction ID: pi_3PhDuhAnVKG20ORq1DkVqq0W | Customer ID: cus_QVCsESjfgcj42p | Total: 1475 | Order Details: {
+  "4": "{(3, 'FairPrice Prawn Crackers', 325)}"
+}
+2024-07-29 22:22:44,177 Log_ID: [1] INFO __init__.py : Status: succeeded | Transaction ID: pi_3PhuTGAnVKG20ORq0JwSCAei | Customer ID: cus_QZ2Xg0MTOvTqYg | Total: 900 | Order Details: {
+  "2": "{(1, 'Wwdad', 400)}"
+}
+2024-07-29 22:23:58,646 Log_ID: [2] INFO __init__.py : Status: succeeded | Transaction ID: pi_3PhuUSAnVKG20ORq1igUfmrI | Customer ID: cus_QZ2ZqIQdBaRt2D | Total: 2150 | Order Details: {
+  "6": "{(3, 'Singlong Kuih Bangkit', 550)}"
+}
+2024-07-30 13:49:48,825 Log_ID: [1] INFO __init__.py : Status: succeeded | Transaction ID: pi_3Pi8wQAnVKG20ORq1bobevt6 | Customer ID: cus_QZ5pJ6qClcOmNb | Total: 1120 | Order Details: {
+  "5": "{(1, 'Wang Lye Fresh Fish Ball Cracker', 620)}"
+}
+2024-07-30 13:51:12,017 Log_ID: [1] INFO __init__.py : Status: succeeded | Transaction ID: pi_3Pi8xlAnVKG20ORq0CmWDSCJ | Customer ID: cus_QZ5pJ6qClcOmNb | Total: 1675 | Order Details: {
+  "4": "{(1, 'FairPrice Prawn Crackers', 325)}",
+  "7": "{(1, 'Casahana Cheesy Pineapple Ball', 850)}"
+}
+2024-07-30 13:51:46,938 Log_ID: [2] INFO __init__.py : Status: succeeded | Transaction ID: pi_3Pi8yKAnVKG20ORq0jORPlTZ | Customer ID: cus_QZ5pJ6qClcOmNb | Total: 1675 | Order Details: {
+  "4": "{(1, 'FairPrice Prawn Crackers', 325)}",
+  "7": "{(1, 'Casahana Cheesy Pineapple Ball', 850)}"
+}
+2024-07-30 13:53:06,664 Log_ID: [1] INFO __init__.py : Status: succeeded | Transaction ID: pi_3Pi8zcAnVKG20ORq09lEtoCz | Customer ID: cus_QZ5pJ6qClcOmNb | Total: 1970 | Order Details: {
+  "5": "{(1, 'Wang Lye Fresh Fish Ball Cracker', 620)}",
+  "7": "{(1, 'Casahana Cheesy Pineapple Ball', 850)}"
+}
+2024-07-30 13:54:05,876 Log_ID: [2] INFO __init__.py : Status: succeeded | Transaction ID: pi_3Pi90ZAnVKG20ORq0sSR9tga | Customer ID: cus_QZ5pJ6qClcOmNb | Total: 1970 | Order Details: {
+  "5": "{(1, 'Wang Lye Fresh Fish Ball Cracker', 620)}",
+  "7": "{(1, 'Casahana Cheesy Pineapple Ball', 850)}"
+}
+2024-07-30 13:54:29,539 Log_ID: [3] INFO __init__.py : Status: succeeded | Transaction ID: pi_3Pi90xAnVKG20ORq0I9oBSkI | Customer ID: cus_QZ5pJ6qClcOmNb | Total: 1675 | Order Details: {
+  "4": "{(1, 'FairPrice Prawn Crackers', 325)}",
+  "7": "{(1, 'Casahana Cheesy Pineapple Ball', 850)}"
+}
+2024-07-30 13:56:53,683 Log_ID: [1] INFO __init__.py : Status: succeeded | Transaction ID: pi_3Pi93HAnVKG20ORq0RxN8PY0 | Customer ID: cus_QZ5pJ6qClcOmNb | Total: 2260 | Order Details: {
+  "11": "{(1, 'FairPrice California Pistachios', 1065)}",
+  "13": "{(1, 'Ding Dong Xiang Arrowhead Chips', 695)}"
+}
+2024-07-30 14:06:02,655 Log_ID: [1] INFO __init__.py : Status: succeeded | Transaction ID: pi_3Pi9C8AnVKG20ORq03RR3iM2 | Customer ID: cus_QZ5pJ6qClcOmNb | Total: 825 | Order Details: {
+  "4": "{(1, 'FairPrice Prawn Crackers', 325)}"
+}
+2024-07-30 14:08:22,435 Log_ID: [1] INFO __init__.py : Status: succeeded | Transaction ID: pi_3Pi9EOAnVKG20ORq0MdIA8is | Customer ID: cus_QZ5pJ6qClcOmNb | Total: 825 | Order Details: {
+  "4": "{(1, 'FairPrice Prawn Crackers', 325)}"
+}
+2024-07-30 14:10:43,726 Log_ID: [1] INFO __init__.py : Status: succeeded | Transaction ID: pi_3Pi9GfAnVKG20ORq1ihe8MjW | Customer ID: cus_QZ5pJ6qClcOmNb | Total: 1225 | Order Details: {
+  "1": "{(1, 'Dwawwwww', 400)}",
+  "4": "{(1, 'FairPrice Prawn Crackers', 325)}"
+}
+2024-07-30 14:11:13,931 Log_ID: [1] INFO __init__.py : Status: succeeded | Transaction ID: pi_3Pi9H9AnVKG20ORq1R0UwrRH | Customer ID: cus_QZ5pJ6qClcOmNb | Total: 1225 | Order Details: {
+  "1": "{(1, 'Dwawwwww', 400)}",
+  "4": "{(1, 'FairPrice Prawn Crackers', 325)}"
+}
+2024-07-30 14:18:03,813 Log_ID: [1] INFO __init__.py : Status: succeeded | Transaction ID: pi_3Pi9NlAnVKG20ORq1jFALco1 | Customer ID: cus_QZ5pJ6qClcOmNb | Total: 1225 | Order Details: {
+  "1": "{(1, 'Dwawwwww', 400)}",
+  "4": "{(1, 'FairPrice Prawn Crackers', 325)}"
+}
+2024-07-30 14:20:29,413 Log_ID: [2] INFO __init__.py : Status: succeeded | Transaction ID: pi_3Pi9Q7AnVKG20ORq0HLUyJPv | Customer ID: cus_QZ5pJ6qClcOmNb | Total: 1225 | Order Details: {
+  "1": "{(1, 'Dwawwwww', 400)}",
+  "4": "{(1, 'FairPrice Prawn Crackers', 325)}"
+}
+2024-07-30 14:21:06,350 Log_ID: [1] INFO __init__.py : Status: succeeded | Transaction ID: pi_3Pi9QiAnVKG20ORq18w4MQMC | Customer ID: cus_QZ5pJ6qClcOmNb | Total: 1225 | Order Details: {
+  "1": "{(1, 'Dwawwwww', 400)}",
+  "4": "{(1, 'FairPrice Prawn Crackers', 325)}"
+}
+2024-07-30 14:22:42,812 Log_ID: [1] INFO __init__.py : Status: succeeded | Transaction ID: pi_3Pi9SGAnVKG20ORq1Y2TFVbu | Customer ID: cus_QZ5pJ6qClcOmNb | Total: 1225 | Order Details: {
+  "1": "{(1, 'Dwawwwww', 400)}",
+  "4": "{(1, 'FairPrice Prawn Crackers', 325)}"
+}
+2024-07-30 14:24:28,534 Log_ID: [1] INFO __init__.py : Status: succeeded | Transaction ID: pi_3Pi9TyAnVKG20ORq06F3nNfi | Customer ID: cus_QZ5pJ6qClcOmNb | Total: 1225 | Order Details: {
+  "1": "{(1, 'Dwawwwww', 400)}",
+  "4": "{(1, 'FairPrice Prawn Crackers', 325)}"
+}
+2024-07-30 14:26:12,531 Log_ID: [1] INFO __init__.py : Status: succeeded | Transaction ID: pi_3Pi9VeAnVKG20ORq1pfFngmT | Customer ID: cus_QZ5pJ6qClcOmNb | Total: 1225 | Order Details: {
+  "1": "{(1, 'Dwawwwww', 400)}",
+  "4": "{(1, 'FairPrice Prawn Crackers', 325)}"
+}
+2024-07-30 14:28:41,243 Log_ID: [1] INFO __init__.py : Status: succeeded | Transaction ID: pi_3Pi9Y3AnVKG20ORq1IdYNHcN | Customer ID: cus_QZ5pJ6qClcOmNb | Total: 1225 | Order Details: {
+  "1": "{(1, 'Dwawwwww', 400)}",
+  "4": "{(1, 'FairPrice Prawn Crackers', 325)}"
+}
+2024-07-30 14:31:59,581 Log_ID: [1] INFO __init__.py : Status: succeeded | Transaction ID: pi_3Pi9bFAnVKG20ORq1fDbYgvh | Customer ID: cus_QZ5pJ6qClcOmNb | Total: 1225 | Order Details: {
+  "1": "{(1, 'Dwawwwww', 400)}",
+  "4": "{(1, 'FairPrice Prawn Crackers', 325)}"
+}
+2024-07-30 14:34:42,056 Log_ID: [1] INFO __init__.py : Status: succeeded | Transaction ID: pi_3Pi9dsAnVKG20ORq1SyDxy4B | Customer ID: cus_QZ5pJ6qClcOmNb | Total: 1225 | Order Details: {
+  "1": "{(1, 'Dwawwwww', 400)}",
+  "4": "{(1, 'FairPrice Prawn Crackers', 325)}"
+}
+2024-07-30 14:37:01,767 Log_ID: [1] INFO __init__.py : Status: succeeded | Transaction ID: pi_3Pi9g7AnVKG20ORq1DlbjEm1 | Customer ID: cus_QZ5pJ6qClcOmNb | Total: 1675 | Order Details: {
+  "4": "{(1, 'FairPrice Prawn Crackers', 325)}",
+  "7": "{(1, 'Casahana Cheesy Pineapple Ball', 850)}"
+}
+2024-07-30 14:37:44,033 Log_ID: [1] INFO __init__.py : Status: succeeded | Transaction ID: pi_3Pi9gnAnVKG20ORq1t6knsay | Customer ID: cus_QZ5pJ6qClcOmNb | Total: 1710 | Order Details: {
+  "6": "{(1, 'Singlong Kuih Bangkit', 550)}",
+  "9": "{(1, 'Wang Lye Kuih Bahulu', 660)}"
+}
+2024-07-30 14:42:43,263 Log_ID: [1] INFO __init__.py : Status: succeeded | Transaction ID: pi_3Pi9ldAnVKG20ORq15pAvplW | Customer ID: cus_QZ5pJ6qClcOmNb | Total: 1675 | Order Details: {
+  "4": "{(1, 'FairPrice Prawn Crackers', 325)}",
+  "7": "{(1, 'Casahana Cheesy Pineapple Ball', 850)}"
+}
+2024-07-30 14:43:36,563 Log_ID: [1] INFO __init__.py : Status: succeeded | Transaction ID: pi_3Pi9mUAnVKG20ORq1iwKGOUq | Customer ID: cus_QZ5pJ6qClcOmNb | Total: 1445 | Order Details: {
+  "4": "{(1, 'FairPrice Prawn Crackers', 325)}",
+  "5": "{(1, 'Wang Lye Fresh Fish Ball Cracker', 620)}"
+}
+2024-07-30 14:47:21,120 Log_ID: [1] INFO __init__.py : Status: succeeded | Transaction ID: pi_3Pi9q7AnVKG20ORq1pyecKVn | Customer ID: cus_QZ5pJ6qClcOmNb | Total: 1445 | Order Details: {
+  "4": "{(1, 'FairPrice Prawn Crackers', 325)}",
+  "5": "{(1, 'Wang Lye Fresh Fish Ball Cracker', 620)}"
+}
+2024-07-30 14:48:01,066 Log_ID: [1] INFO __init__.py : Status: succeeded | Transaction ID: pi_3Pi9qlAnVKG20ORq1zn6GORg | Customer ID: cus_QZ5pJ6qClcOmNb | Total: 900 | Order Details: {
+  "1": "{(1, 'Dwawwwww', 400)}"
+}
+2024-07-30 14:48:55,463 Log_ID: [1] INFO __init__.py : Status: succeeded | Transaction ID: pi_3Pi9rdAnVKG20ORq1fTDmMWk | Customer ID: cus_QZ5pJ6qClcOmNb | Total: 825 | Order Details: {
+  "4": "{(1, 'FairPrice Prawn Crackers', 325)}"
+}
+2024-07-30 14:49:28,903 Log_ID: [1] INFO __init__.py : Status: succeeded | Transaction ID: pi_3Pi9sAAnVKG20ORq0jx0pCtr | Customer ID: cus_QZ5pJ6qClcOmNb | Total: 825 | Order Details: {
+  "4": "{(1, 'FairPrice Prawn Crackers', 325)}"
+}
+2024-07-30 14:50:21,377 Log_ID: [1] INFO __init__.py : Status: succeeded | Transaction ID: pi_3Pi9t1AnVKG20ORq1vJjddIY | Customer ID: cus_QZ5pJ6qClcOmNb | Total: 1350 | Order Details: {
+  "7": "{(1, 'Casahana Cheesy Pineapple Ball', 850)}"
+}
+2024-07-30 14:52:36,382 Log_ID: [1] INFO __init__.py : Status: succeeded | Transaction ID: pi_3Pi9vCAnVKG20ORq1nxln4ow | Customer ID: cus_QZ5pJ6qClcOmNb | Total: 825 | Order Details: {
+  "4": "{(1, 'FairPrice Prawn Crackers', 325)}"
+}
+2024-07-30 14:53:00,472 Log_ID: [1] INFO __init__.py : Status: succeeded | Transaction ID: pi_3Pi9vaAnVKG20ORq0hF2wtuI | Customer ID: cus_QZ5pJ6qClcOmNb | Total: 900 | Order Details: {
+  "1": "{(1, 'Dwawwwww', 400)}"
+}
+2024-07-30 14:53:32,751 Log_ID: [1] INFO __init__.py : Status: succeeded | Transaction ID: pi_3Pi9w6AnVKG20ORq124JlJ0l | Customer ID: cus_QZ5pJ6qClcOmNb | Total: 900 | Order Details: {
+  "1": "{(1, 'Dwawwwww', 400)}"
+}
+2024-07-30 14:55:18,126 Log_ID: [1] INFO __init__.py : Status: succeeded | Transaction ID: pi_3Pi9xoAnVKG20ORq0IIAWhOZ | Customer ID: cus_QZ5pJ6qClcOmNb | Total: 900 | Order Details: {
+  "1": "{(1, 'Dwawwwww', 400)}"
+}
+2024-07-30 14:55:52,804 Log_ID: [1] INFO __init__.py : Status: succeeded | Transaction ID: pi_3Pi9yMAnVKG20ORq1vOqJfFv | Customer ID: cus_QZ5pJ6qClcOmNb | Total: 900 | Order Details: {
+  "1": "{(1, 'Dwawwwww', 400)}"
+}
+2024-07-30 14:57:25,019 Log_ID: [1] INFO __init__.py : Status: succeeded | Transaction ID: pi_3Pi9zrAnVKG20ORq02AziwQm | Customer ID: cus_QZ5pJ6qClcOmNb | Total: 900 | Order Details: {
+  "1": "{(1, 'Dwawwwww', 400)}"
+}
+2024-07-30 14:59:54,347 Log_ID: [1] INFO __init__.py : Status: succeeded | Transaction ID: pi_3PiA2GAnVKG20ORq04A98O4I | Customer ID: cus_QZ5pJ6qClcOmNb | Total: 1675 | Order Details: {
+  "4": "{(1, 'FairPrice Prawn Crackers', 325)}",
+  "7": "{(1, 'Casahana Cheesy Pineapple Ball', 850)}"
+}
+2024-07-30 15:01:09,564 Log_ID: [1] INFO __init__.py : Status: succeeded | Transaction ID: pi_3PiA3TAnVKG20ORq0z84GTce | Customer ID: cus_QZ5pJ6qClcOmNb | Total: 900 | Order Details: {
+  "1": "{(1, 'Dwawwwww', 400)}"
+}
+2024-07-30 15:03:26,772 Log_ID: [1] INFO __init__.py : Status: succeeded | Transaction ID: pi_3PiA5gAnVKG20ORq1QAHb12c | Customer ID: cus_QZ5pJ6qClcOmNb | Total: 1675 | Order Details: {
+  "4": "{(1, 'FairPrice Prawn Crackers', 325)}",
+  "7": "{(1, 'Casahana Cheesy Pineapple Ball', 850)}"
+}
+2024-07-30 15:04:30,252 Log_ID: [2] INFO __init__.py : Status: succeeded | Transaction ID: pi_3PiA6iAnVKG20ORq0qXhYZBx | Customer ID: cus_QZ5pJ6qClcOmNb | Total: 1225 | Order Details: {
+  "1": "{(1, 'Dwawwwww', 400)}",
+  "4": "{(1, 'FairPrice Prawn Crackers', 325)}"
+}
+2024-07-30 15:05:18,654 Log_ID: [1] INFO __init__.py : Status: succeeded | Transaction ID: pi_3PiA7UAnVKG20ORq17EU5W3g | Customer ID: cus_QZ5pJ6qClcOmNb | Total: 1225 | Order Details: {
+  "1": "{(1, 'Dwawwwww', 400)}",
+  "4": "{(1, 'FairPrice Prawn Crackers', 325)}"
+}
+2024-07-30 15:06:03,325 Log_ID: [1] INFO __init__.py : Status: succeeded | Transaction ID: pi_3PiA8DAnVKG20ORq1KRfOI94 | Customer ID: cus_QZ5pJ6qClcOmNb | Total: 1225 | Order Details: {
+  "1": "{(1, 'Dwawwwww', 400)}",
+  "4": "{(1, 'FairPrice Prawn Crackers', 325)}"
+}
+2024-07-30 15:09:09,348 Log_ID: [1] INFO __init__.py : Status: succeeded | Transaction ID: pi_3PiABDAnVKG20ORq0A96olcP | Customer ID: cus_QZ5pJ6qClcOmNb | Total: 1225 | Order Details: {
+  "1": "{(1, 'Dwawwwww', 400)}",
+  "4": "{(1, 'FairPrice Prawn Crackers', 325)}"
+}
+2024-07-30 15:10:26,478 Log_ID: [1] INFO __init__.py : Status: succeeded | Transaction ID: pi_3PiACSAnVKG20ORq0a2zUhYR | Customer ID: cus_QZ5pJ6qClcOmNb | Total: 1675 | Order Details: {
+  "4": "{(1, 'FairPrice Prawn Crackers', 325)}",
+  "7": "{(1, 'Casahana Cheesy Pineapple Ball', 850)}"
+}
+2024-07-30 15:12:38,544 Log_ID: [1] INFO __init__.py : Status: succeeded | Transaction ID: pi_3PiAEaAnVKG20ORq1dH7mGiz | Customer ID: cus_QZ5pJ6qClcOmNb | Total: 1225 | Order Details: {
+  "1": "{(1, 'Dwawwwww', 400)}",
+  "4": "{(1, 'FairPrice Prawn Crackers', 325)}"
+}
+2024-07-30 15:14:52,156 Log_ID: [1] INFO __init__.py : Status: succeeded | Transaction ID: pi_3PiAGkAnVKG20ORq0nOGQg70 | Customer ID: cus_QZ5pJ6qClcOmNb | Total: 1225 | Order Details: {
+  "1": "{(1, 'Dwawwwww', 400)}",
+  "4": "{(1, 'FairPrice Prawn Crackers', 325)}"
+}
+2024-07-30 15:16:17,320 Log_ID: [1] INFO __init__.py : Status: succeeded | Transaction ID: pi_3PiAI7AnVKG20ORq1D8b2UVE | Customer ID: cus_QZ5pJ6qClcOmNb | Total: 1520 | Order Details: {
+  "1": "{(1, 'Dwawwwww', 400)}",
+  "5": "{(1, 'Wang Lye Fresh Fish Ball Cracker', 620)}"
+}
+2024-07-30 15:16:43,828 Log_ID: [1] INFO __init__.py : Status: succeeded | Transaction ID: pi_3PiAIXAnVKG20ORq1CwqLIfU | Customer ID: cus_QZ5pJ6qClcOmNb | Total: 2065 | Order Details: {
+  "4": "{(1, 'FairPrice Prawn Crackers', 325)}",
+  "5": "{(2, 'Wang Lye Fresh Fish Ball Cracker', 620)}"
+}
+2024-07-30 15:20:02,936 Log_ID: [1] INFO __init__.py : Status: succeeded | Transaction ID: pi_3PiALkAnVKG20ORq1YT47LkU | Customer ID: cus_QZ5pJ6qClcOmNb | Total: 2675 | Order Details: {
+  "1": "{(3, 'Dwawwwww', 400)}",
+  "4": "{(3, 'FairPrice Prawn Crackers', 325)}"
+}
+2024-07-30 15:53:54,479 Log_ID: [1] INFO __init__.py : Status: succeeded | Transaction ID: pi_3PiAsWAnVKG20ORq0zI2BHtZ | Customer ID: cus_QZ5pJ6qClcOmNb | Total: 2675 | Order Details: {
+  "1": "{(3, 'Dwawwwww', 400)}",
+  "4": "{(3, 'FairPrice Prawn Crackers', 325)}"
+}
+2024-07-30 17:19:30,622 Log_ID: [1] INFO __init__.py : Status: succeeded | Transaction ID: pi_3PiCDMAnVKG20ORq0Y5zojS3 | Customer ID: cus_QZ5pJ6qClcOmNb | Total: 1120 | Order Details: {
+  "5": "{(1, 'Wang Lye Fresh Fish Ball Cracker', 620)}"
+}
+2024-07-30 17:27:50,490 Log_ID: [1] INFO __init__.py : Status: succeeded | Transaction ID: pi_3PiCLQAnVKG20ORq1wCiaR5c | Customer ID: cus_QZ5pJ6qClcOmNb | Total: 4025 | Order Details: {
+  "4": "{(3, 'Fairprice prawn crackers', 325)}",
+  "7": "{(3, 'Casahana Cheesy Pineapple Ball', 850)}"
+}
+2024-07-30 17:29:26,622 Log_ID: [1] INFO __init__.py : Status: succeeded | Transaction ID: pi_3PiCMyAnVKG20ORq13xembGY | Customer ID: cus_QZ5pJ6qClcOmNb | Total: 1675 | Order Details: {
+  "4": "{(1, 'Fairprice prawn crackers', 325)}",
+  "7": "{(1, 'Casahana Cheesy Pineapple Ball', 850)}"
+}
+2024-07-30 17:30:24,808 Log_ID: [1] INFO __init__.py : Status: succeeded | Transaction ID: pi_3PiCNvAnVKG20ORq0J01Id3D | Customer ID: cus_QZ5pJ6qClcOmNb | Total: 1225 | Order Details: {
+  "1": "{(1, 'Dwawwwww', 400)}",
+  "4": "{(1, 'Fairprice prawn crackers', 325)}"
+}
+2024-07-30 17:30:51,686 Log_ID: [2] INFO __init__.py : Status: succeeded | Transaction ID: pi_3PiCOLAnVKG20ORq0evDE7dD | Customer ID: cus_QZ5pJ6qClcOmNb | Total: 6377 | Order Details: {
+  "10": "{(3, 'Nestle Kit Kat 2 Finger Chocolate Bar - Golden Dragon (Tin)', 894)}",
+  "11": "{(3, 'FairPrice California Pistachios', 1065)}"
+}
+2024-07-30 17:52:44,290 Log_ID: [1] INFO __init__.py : Status: succeeded | Transaction ID: pi_3PiCjWAnVKG20ORq0GsWarOs | Customer ID: cus_QZ5pJ6qClcOmNb | Total: 1120 | Order Details: {
+  "5": "{(1, 'Wang Lye Fresh Fish Ball Cracker', 620)}"
+}
+2024-07-30 17:55:57,080 Log_ID: [1] INFO __init__.py : Status: succeeded | Transaction ID: pi_3PiCmdAnVKG20ORq0H1tbU4E | Customer ID: cus_QZ5pJ6qClcOmNb | Total: 2675 | Order Details: {
+  "1": "{(3, 'Dwawwwww', 400)}",
+  "4": "{(3, 'Fairprice prawn crackers', 325)}"
+}
+2024-07-30 17:56:27,068 Log_ID: [2] INFO __init__.py : Status: succeeded | Transaction ID: pi_3PiCn7AnVKG20ORq0jR5wcLW | Customer ID: cus_QZ5dzAehNY0AnE | Total: 3335 | Order Details: {
+  "4": "{(3, 'Fairprice prawn crackers', 325)}",
+  "5": "{(3, 'Wang Lye Fresh Fish Ball Cracker', 620)}"
+}
+2024-07-30 17:58:41,969 Log_ID: [1] INFO __init__.py : Status: succeeded | Transaction ID: pi_3PiCpIAnVKG20ORq1fzLt1JD | Customer ID: cus_QZ5pJ6qClcOmNb | Total: 2125 | Order Details: {
+  "4": "{(5, 'Fairprice prawn crackers', 325)}"
+}
+2024-07-30 18:01:27,339 Log_ID: [1] INFO __init__.py : Status: succeeded | Transaction ID: pi_3PiCrxAnVKG20ORq0zSlKfPl | Customer ID: cus_QZ5dzAehNY0AnE | Total: 4750 | Order Details: {
+  "7": "{(5, 'Casahana Cheesy Pineapple Ball', 850)}"
+}
+2024-07-30 18:06:33,479 Log_ID: [1] INFO __init__.py : Status: succeeded | Transaction ID: pi_3PiCwtAnVKG20ORq0Oqfk3FF | Customer ID: cus_QZ5dzAehNY0AnE | Total: 1225 | Order Details: {
+  "1": "{(1, 'Dwawwwww', 400)}",
+  "4": "{(1, 'Fairprice prawn crackers', 325)}"
+}
+2024-07-30 18:09:36,939 Log_ID: [1] INFO __init__.py : Status: succeeded | Transaction ID: pi_3PiCzrAnVKG20ORq0ey2yg6I | Customer ID: cus_QZ5pJ6qClcOmNb | Total: 1445 | Order Details: {
+  "4": "{(1, 'Fairprice prawn crackers', 325)}",
+  "5": "{(1, 'Wang Lye Fresh Fish Ball Cracker', 620)}"
+}
+2024-07-30 18:18:59,691 Log_ID: [1] INFO __init__.py : Status: succeeded | Transaction ID: pi_3PiD8wAnVKG20ORq1V2wV6p5 | Customer ID: cus_QZ5pJ6qClcOmNb | Total: 1225 | Order Details: {
+  "1": "{(1, 'Dwawwwww', 400)}",
+  "4": "{(1, 'Fairprice prawn crackers', 325)}"
+}
+2024-07-30 18:30:52,762 Log_ID: [1] INFO __init__.py : Status: succeeded | Transaction ID: pi_3PiDKRAnVKG20ORq0Zo5aPyj | Customer ID: cus_QZ5pJ6qClcOmNb | Total: 1225 | Order Details: {
+  "1": "{(1, 'Dwawwwww', 400)}",
+  "4": "{(1, 'Fairprice prawn crackers', 325)}"
+}
+2024-07-30 18:32:08,632 Log_ID: [1] INFO __init__.py : Status: succeeded | Transaction ID: pi_3PiDLeAnVKG20ORq1a9putTe | Customer ID: cus_QZ5pJ6qClcOmNb | Total: 1225 | Order Details: {
+  "1": "{(1, 'Dwawwwww', 400)}",
+  "4": "{(1, 'Fairprice prawn crackers', 325)}"
+}
+2024-07-30 18:32:51,018 Log_ID: [2] INFO __init__.py : Status: succeeded | Transaction ID: pi_3PiDMLAnVKG20ORq0WoRoqyP | Customer ID: cus_QZ5pJ6qClcOmNb | Total: 2125 | Order Details: {
+  "4": "{(5, 'Fairprice prawn crackers', 325)}"
+}
+2024-07-30 18:33:59,745 Log_ID: [3] INFO __init__.py : Status: succeeded | Transaction ID: pi_3PiDNRAnVKG20ORq1lJS1iVI | Customer ID: cus_QZ5pJ6qClcOmNb | Total: 5200 | Order Details: {
+  "4": "{(4, 'Fairprice prawn crackers', 325)}",
+  "7": "{(4, 'Casahana Cheesy Pineapple Ball', 850)}"
+}
+2024-07-30 18:34:24,242 Log_ID: [4] INFO __init__.py : Status: succeeded | Transaction ID: pi_3PiDNqAnVKG20ORq1AhsWuTq | Customer ID: cus_QZ5dzAehNY0AnE | Total: 4157 | Order Details: {
+  "10": "{(3, 'Nestle Kit Kat 2 Finger Chocolate Bar - Golden Dragon (Tin)', 894)}",
+  "4": "{(3, 'Fairprice prawn crackers', 325)}"
+}
+2024-07-30 18:38:16,557 Log_ID: [1] INFO __init__.py : Status: succeeded | Transaction ID: pi_3PiDRaAnVKG20ORq1EhFmdB3 | Customer ID: cus_QZ5pJ6qClcOmNb | Total: 1160 | Order Details: {
+  "9": "{(1, 'Wang Lye Kuih Bahulu', 660)}"
+}
+2024-07-30 19:05:08,734 Log_ID: [2] INFO __init__.py : Status: succeeded | Transaction ID: pi_3PiDraAnVKG20ORq0lAbBiZo | Customer ID: cus_QZMEQigoYNzTUS | Total: 1445 | Order Details: {
+  "4": "{(1, 'Fairprice prawn crackers', 325)}",
+  "5": "{(1, 'Wang Lye Fresh Fish Ball Cracker', 620)}"
+}
+2024-07-30 22:49:22,744 Log_ID: [1] INFO __init__.py : Status: succeeded | Transaction ID: pi_3PiHMbAnVKG20ORq0Mj7Z7sb | Customer ID: cus_QZ5pJ6qClcOmNb | Total: 1225 | Order Details: {
+  "1": "{(1, 'Dwawwwww', 400)}",
+  "4": "{(1, 'Fairprice prawn crackers', 325)}"
+}

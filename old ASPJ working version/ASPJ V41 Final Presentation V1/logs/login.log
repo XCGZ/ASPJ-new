@@ -1,0 +1,21 @@
+2024-07-31 01:24:10,396 Log_ID: [1] WARNING __init__.py : ip: 127.0.0.1 has just tried and failed to login without using a valid email in the database.
+2024-07-31 01:24:35,781 Log_ID: [2] WARNING __init__.py : ip: 127.0.0.1 has just tried and failed to login without using a valid email in the database.
+2024-08-12 19:08:44,874 Log_ID: [1] WARNING __init__.py : ip: 127.0.0.1 has just tried and failed to login without using a valid email in the database.
+2024-08-12 19:08:46,442 Log_ID: [2] WARNING __init__.py : ip: 127.0.0.1 has just tried and failed to login without using a valid email in the database.
+2024-08-12 19:09:25,899 Log_ID: [3] WARNING __init__.py : ip: 127.0.0.1 has just tried and failed to login without using a valid email in the database.
+2024-08-13 01:19:03,380 Log_ID: [8] WARNING __init__.py : Staff | Email: leezhengjie05@gmail.com | role: Admin | Has failed to login
+2024-08-13 16:43:59,024 Log_ID: [7] WARNING __init__.py : Staff | Email: leezhengjie05@gmail.com | role: Admin | Has failed to login
+2024-08-13 16:44:01,406 Log_ID: [8] WARNING __init__.py : Staff | Email: leezhengjie05@gmail.com | role: Admin | Has failed to login
+2024-08-16 08:53:41,159 Log_ID: [1] WARNING __init__.py : ip: 127.0.0.1 has just tried and failed to login without using a valid email in the database.
+2024-08-16 10:48:39,910 Log_ID: [1] WARNING __init__.py : ip: 127.0.0.1 has just tried and failed to login without using a valid email in the database.
+2024-08-16 10:49:20,443 Log_ID: [2] WARNING __init__.py : ip: 127.0.0.1 has just tried and failed to login without using a valid email in the database.
+2024-08-17 22:44:20,528 Log_ID: [1] WARNING __init__.py : ip: 127.0.0.1 has just tried and failed to login without using a valid email in the database.
+2024-08-17 22:50:17,614 Log_ID: [24] WARNING __init__.py : ip: 127.0.0.1 has just tried and failed to login without using a valid email in the database.
+2024-08-17 23:33:12,878 Log_ID: [2] WARNING __init__.py : ip: 127.0.0.1 has just tried and failed to login without using a valid email in the database.
+2024-08-17 23:37:07,783 Log_ID: [24] WARNING __init__.py : ip: 127.0.0.1 has just tried and failed to login without using a valid email in the database.
+2024-08-17 23:39:09,159 Log_ID: [2] WARNING __init__.py : ip: 127.0.0.1 has just tried and failed to login without using a valid email in the database.
+2024-08-17 23:40:57,188 Log_ID: [24] WARNING __init__.py : ip: 127.0.0.1 has just tried and failed to login without using a valid email in the database.
+2024-08-17 23:44:30,748 Log_ID: [44] WARNING __init__.py : ip: 127.0.0.1 has just tried and failed to login without using a valid email in the database.
+2024-08-17 23:49:53,750 Log_ID: [66] WARNING __init__.py : ip: 127.0.0.1 has just tried and failed to login without using a valid email in the database.
+2024-08-17 23:54:55,348 Log_ID: [87] WARNING __init__.py : ip: 127.0.0.1 has just tried and failed to login without using a valid email in the database.
+2024-12-31 16:25:43,746 Log_ID: [9] WARNING __init__.py : Staff | Email: leezhengjie05@gmail.com | role: Admin | Has failed to login

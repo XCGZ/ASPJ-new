@@ -1,0 +1,72 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter&family=Poppins&display=swap');
+
+
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #222222;
+}
+
+h2 {
+    padding-top: 40px;
+    text-align: center;
+}
+
+.info {
+    padding-top: 50px;
+    padding-left: 60px;
+}
+
+.info-item {
+    padding-bottom: 40px;
+}
+
+.logout {
+    padding-left: 150px;
+    font-size: 4rem;
+}
+
+body {
+    background: #222222 !important
+}
+
+.form-control:focus {
+    box-shadow: none;
+    border-color: #BA68C8
+}
+
+.profile-button {
+    background: darkgreen;
+    box-shadow: none;
+    border: none
+}
+
+.profile-button:hover {
+    background: #682773
+}
+
+.profile-button:focus {
+    background: #682773;
+    box-shadow: none
+}
+
+.profile-button:active {
+    background: #682773;
+    box-shadow: none
+}
+
+.back:hover {
+    color: #682773;
+    cursor: pointer
+}
+
+.labels {
+    font-size: 11px
+}
+
+.add-experience:hover {
+    background: #BA68C8;
+    color: #fff;
+    cursor: pointer;
+    border: solid 1px #BA68C8
+}

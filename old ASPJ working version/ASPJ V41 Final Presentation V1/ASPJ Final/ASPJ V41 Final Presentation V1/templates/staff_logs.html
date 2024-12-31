@@ -1,0 +1,174 @@
+{% extends "base.html" %}
+{% block title %} Products page {% endblock %}
+{% block navbar %}
+{% include 'includes/_staff_navbar.html' %}
+{% endblock %}
+
+{% block content %}
+{% from "includes/_formHelper.html" import render_field %}
+<style>
+    /* Add this CSS to your stylesheet or in a <style> block in your HTML */
+
+#logsContainer {
+    white-space: pre-wrap; /* Preserve whitespace and line breaks */
+    font-family: monospace; /* Use a monospaced font */
+    background-color: #f4f4f4; /* Light gray background */
+    border: 1px solid #ddd; /* Light border around the logs */
+    padding: 10px; /* Add some padding */
+    max-height: 700px; /* Set a maximum height */
+    max-width: 90%; /* Set a maximum width */
+    overflow-y: auto; /* Add scroll if content exceeds max height */
+    margin: 0 auto; /* Center horizontally */
+}
+
+.log-entry {
+    margin-bottom: 10px; /* Space between log entries */
+}
+
+.timestamp {
+    color: #888; /* Light gray color for timestamps */
+}
+
+.log-id {
+    color: #007bff; /* Blue color for log IDs */
+}
+
+.log-type {
+    font-weight: bold; /* Bold text for log types */
+}
+
+.error {
+    color: #ff0000; /* Red color for errors */
+}
+
+.info {
+    color: #28a745; /* Green color for info */
+}
+
+.warning {
+    color: orange;
+}
+
+.critical {
+    color: red;
+    font-weight: bolder;
+}
+.error-code {
+    color: #ff0000; /* Red color for error codes */
+    font-weight: bold; /* Optional: make it bold */
+}
+.status-success {
+    color: #00ff00;
+    font-weight: bold; /* Green color for success */
+}
+
+.status-failure {
+    color: #ff0000;
+    font-weight: bold; /* Red color for failure */
+}
+.critical {
+    color: red;
+    font-weight: bolder;
+}
+</style>
+<!-- Buttons to fetch different logs -->
+<button id="generalLogsButton">General Logs</button>
+<button id="productLogsButton">Product Database Logs</button>
+<button id="customerPurchaseLogsButton">Order Logs</button>
+<button id="customerInfoLogsButton">Customer Info Logs</button>
+<button id="systemInfoLogsButton">System Info Logs</button>
+<button id="loginInfoLogsButton">Staff Login Logs</button>
+
+<pre id="logsContainer"></pre>
+
+
+
+{% block javascript %}
+<script>
+    function formatLog(logContent) {
+        // Basic formatting for the log content
+        return logContent
+            .replace(/(2024-\d{2}-\d{2} \d{2}:\d{2}:\d{2},\d{3})/g, '<span class="timestamp">$1</span>')
+            .replace(/(Log_ID: \[\d+\])/g, '<span class="log-id">$1</span>')
+            .replace(/(ERROR|INFO)/g, '<span class="log-type">$1</span>')
+            .replace(/ERROR/g, '<span class="error">ERROR</span>')
+            .replace(/INFO/g, '<span class="info">INFO</span>')
+            .replace(/WARNING/g, '<span class="warning">WARNING</span>')
+            .replace(/CRITICAL/g, '<span class="critical">CRITICAL</span>')
+            .replace(/Error Code: (\w+)/g, '<span class="error-code">Error Code: $1</span>')
+            .replace(/Status: (requires_payment_method|succeeded)/g, function(match, p1) {
+            var statusClass = p1 === 'succeeded' ? 'status-success' : 'status-failure';
+            return '<span class="' + statusClass + '">Status: ' + p1 + '</span>';
+        });
+    }
+    var productLogsButton = document.getElementById('productLogsButton')
+    var customerPurchaseLogsButton = document.getElementById('customerPurchaseLogsButton')
+    var customerInfoLogsButton = document.getElementById('customerInfoLogsButton')
+    var systemInfoLogsButton = document.getElementById('systemInfoLogsButton')
+    var loginInfoLogsButton = document.getElementById('loginInfoLogsButton')
+    var generalLogsButton = document.getElementById('generalLogsButton')
+    productLogsButton.addEventListener('click', handleButton);
+    customerPurchaseLogsButton.addEventListener('click', handleButton)
+    customerInfoLogsButton.addEventListener('click',handleButton)
+    systemInfoLogsButton.addEventListener('click', handleButton)
+    loginInfoLogsButton.addEventListener('click', handleButton)
+    generalLogsButton.addEventListener('click', handleButton)
+    function handleButton(event) {
+        var buttonId = event.target.id;
+        var logsContainer = document.getElementById('logsContainer');
+
+        if (buttonId === 'productLogsButton') {
+            fetch('/fetch-db-logs')
+                .then(response => response.text())
+                .then(data => {
+                    logsContainer.innerHTML = formatLog(data);
+                })
+                .catch(error => console.error('Error fetching staff logs:', error));
+        
+        }
+
+        else if (buttonId == 'customerPurchaseLogsButton') {
+            fetch('/fetch-customer-purchase-logs')
+                .then(response => response.text())
+                .then(data => {
+                    logsContainer.innerHTML = formatLog(data);
+                })
+                .catch(error => console.error('Error fetching staff logs:', error));
+        }
+        else if (buttonId == 'customerInfoLogsButton') {
+            fetch('/fetch-customer-info-logs')
+                .then(response => response.text())
+                .then(data => {
+                    logsContainer.innerHTML = formatLog(data);
+                })
+                .catch(error => console.error('Error fetching staff logs:', error));
+        }
+        else if (buttonId == 'systemInfoLogsButton') {
+            fetch('/fetch-system-logs')
+                .then(response => response.text())
+                .then(data => {
+                    logsContainer.innerHTML = formatLog(data);
+                })
+                .catch(error => console.error('Error fetching staff logs:', error));
+        }
+        else if (buttonId == 'loginInfoLogsButton') {
+            fetch('/fetch-login-logs')
+                .then(response => response.text())
+                .then(data => {
+                    logsContainer.innerHTML = formatLog(data);
+                })
+                .catch(error => console.error('Error fetching staff logs:', error));
+        }
+        else if (buttonId == 'generalLogsButton') {
+            fetch('/fetch-general-logs')
+                .then(response => response.text())
+                .then(data => {
+                    logsContainer.innerHTML = formatLog(data);
+                })
+                .catch(error => console.error('Error fetching staff logs:', error));
+        }
+    }
+</script>
+
+{% endblock %}
+{% endblock %}

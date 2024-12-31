@@ -1,0 +1,296 @@
+{% extends "base.html" %}
+{% block title %}Products System - Retrieve Products{% endblock %}
+{% block navbar %}
+{% include 'includes/_staff_navbar.html' %}
+{% endblock %}
+{% block content %}
+{% from "includes/_formHelper.html" import render_field %}
+<style>
+    table {
+        table-layout: fixed;
+        width: 100%;
+    }
+    th, td {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+</style>
+
+<h1 class="display-4">Retrieve Products</h1>
+
+<div>
+    {% if count == 0 %}
+    <p>There are no products.</p>
+    {% elif count == 1 %}
+    <p>There is 1 product.</p>
+    {% else %}
+    <p>There are {{ count }} products.</p>
+    {% endif %}
+</div>
+<div class="dropdown">
+    <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+      Sort By
+    </button>
+    <ul id="select-list" class="dropdown-menu">
+      <li><a class="dropdown-item" href="#">Product ID</a></li>
+      <li><a class="dropdown-item" href="#">Product Name</a></li>
+      <li><a class="dropdown-item" href="#">Product Country</a></li>
+      <li><a class="dropdown-item" href="#">Product Type</a></li>
+      <li><a class="dropdown-item" href="#">Product Dietary Attributes</a></li>
+    </ul>
+  </div>
+<div>
+    
+    <!-- Search Bar text box -->
+    <div class="form-group">
+        {{ render_field(form.search, class="form-control", id="mySearch", onkeyup="myFunction()",placeholder="Search For Product", title="Type in a category", style="width: 30%;") }}
+    </div>
+    <br>
+    <!-- Search Bar text box -->
+</div>
+<div>
+    <table class="table table-striped">
+
+        <thead>
+            <tr>
+                <th>Product ID</th>
+                <th>Product Name</th>
+                <th>Product Country</th>
+                <th>Product Type</th>
+                <th>Product Dietary Attributes</th>
+                <th>Product Quantity</th>
+                <th>Product Price</th>
+                <th>Product URL</th>
+                <th></th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody id="myMenu" class="product-list">
+            {% for product in products_list %}
+            <tr class="product-container ">
+                <td class="product-id">{{ product.get_id() }}</td>
+                <td class="product-title">{{ product.get_name() }}</td>
+                <td class="product-country">{{ product.get_country() }}</td>
+                <td class="product-type">{{ product.get_type()|replace("_", " ") }}</td>
+                <td class="product-dietary">{{ product.get_dietary()|replace("_", " ") }}</td>
+                <td>{{ product.get_quantity() }}</td>
+                <td>{{ product.get_price() }}</td>
+                <td style="width: 60%;">{{ product.get_url() }}</td>
+                <td><a href="/updateProducts/{{product.get_id()}}" class="btn btn-warning">Update</a></td>
+                <td>
+                    <form action="{{url_for('delete_products', id=product.get_id())}}" method="POST">
+                        <!-- Button to Open the Modal -->
+                        <button type="button" class="btn btn-danger" data-bs-toggle="modal"
+                            data-bs-target="#myModal_{{product.get_id()}}">
+                            Delete
+                        </button>
+                        <!-- The Modal -->
+                        <div class="modal" id="myModal_{{product.get_id()}}">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <!-- Modal Header -->
+                                    <div class="modal-header">
+                                        <h4 class="modal-title">Delete Confirmation</h4>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                                    </div>
+                                    <!-- Modal body -->
+                                    <div class="modal-body">
+                                        Are you sure you want to delete Product: {{product.get_id() }} {{product.get_name()}}?
+                                    </div>
+                                    <!-- Modal footer -->
+                                    <div class="modal-footer">
+                                        <input type="submit" value="Delete" class="btn btn-danger">
+                                        <button type="button" class="btn btn-secondary"
+                                            data-bs-dismiss="modal">Cancel</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </td>
+            </tr>
+            {% endfor %}
+        </div>
+        </tbody>
+    </table>
+</div>
+{% block footer %}
+        
+        {% endblock %}
+{% for key in cart_session %}
+    {{cart_session[key]["name"]}}
+{% endfor %}
+
+{% block javascript %}
+<script>
+
+// $(document).ready(function() {
+//     $(".dropdown-menu li a").click(function(){
+//         var selText = $(this).text();
+//         $(this).parents('.dropdown').find('.dropdown-toggle').html(selText+' <span class="caret"></span>');
+//     });
+
+//     var tableRows = document.querySelectorAll(".product-container");
+
+//     $('#select-list li').on('click', function(){
+//         var selectedText = $(this).text();
+//         filterTableRows(selectedText);
+//     });
+
+//     filter = input.value.toUpperCase();
+
+//     function filterTableRows(filter, selectedText) {
+//         console.log(filter)
+//         for (var i = 0; i < tableRows.length; i++) {
+//             var productName = tableRows[i].querySelector(".product-title").textContent.toUpperCase();
+//             var productID = tableRows[i].querySelector(".product-id").textContent;
+//             selectedText = selectedText;
+//             var action = filter;
+//             if (action === 'Action' || productName.indexOf(filter) > -1) {
+//             tableRows[i].style.display = "";
+            
+//             } else if (action == 'Another Action'|| productID.indexOf(filter) > -1) {
+//                 tableRows[i].style.display = ""; }
+//             else {
+//                 tableRows[i].style.display = "none";
+//             }
+//         }
+//     }
+
+//     // Call myFunction initially to filter the rows based on the initial value of the search input
+//     myFunction();
+// });
+    
+// function myFunction() {
+//     $(".dropdown-menu li a").click(function(){
+//         var selText = $(this).text();
+//         $(this).parents('.dropdown').find('.dropdown-toggle').html(selText+' <span class="caret"></span>');
+//     });
+//     var input, filter, tableRows, i, productName;
+//     input = document.getElementById("mySearch");
+//     filter = input.value.toUpperCase();
+//     tableRows = document.querySelectorAll(".product-container");
+//     console.log(filter)
+//     var selectedText;
+    
+
+//     $('#select-list li').on('click', function(){
+//         selectedText = $(this).text();
+//         // Here you can use the selectedText variable for further processing
+//         // For example, you can filter the tableRows based on the selectedText
+//         filterTableRows(selectedText);
+//     });
+
+//     // You should move the filtering logic outside of the click event listener
+//     function filterTableRows(selectedText) {
+//         for (i = 0; i < tableRows.length; i++) {
+//             productName = tableRows[i].querySelector(".product-title").textContent.toUpperCase();
+//             productID = tableRows[i].querySelector(".product-id").textContent;
+//             if (selectedText === 'Action' || productName.indexOf(filter) > -1) {
+//                 tableRows[i].style.display = "";
+
+            
+//             } else if (selectedText == 'Another Action'|| productID.indexOf(filter) > -1) {
+//                 tableRows[i].style.display = ""; }
+//             else {
+//                 tableRows[i].style.display = "none";
+//             }
+//         }
+//     }
+
+//     // Call filterTableRows initially to filter the rows based on the initial value of selectedText
+//     filterTableRows(selectedText);
+// }
+var selText = 'Action';
+
+function myFunction() {
+    var input, filter, tableRows, i, productName;
+    input = document.getElementById("mySearch");
+    filter = input.value.toUpperCase();
+    tableRows = document.querySelectorAll(".product-container");
+    console.log(filter);
+    // Log selText here
+
+    // Define filterTableRows function
+    function filterTableRows() {
+        console.log(selText)
+        if (selText == 'Product Name') {
+            for (i = 0; i < tableRows.length; i++) {
+                productName = tableRows[i].querySelector(".product-title").textContent.toUpperCase();
+                if (productName.indexOf(filter) > -1) {
+                    tableRows[i].style.display = "";
+                }
+                else {
+                  tableRows[i].style.display = "none";
+                }
+            }
+        }
+        if (selText == 'Product ID') {
+            for (i = 0; i < tableRows.length; i++) {
+                productID = tableRows[i].querySelector(".product-id").textContent.toUpperCase();
+                if (productID.indexOf(filter) > -1) {
+                    tableRows[i].style.display = "";
+                }
+                else {
+                  tableRows[i].style.display = "none";
+                }
+            }
+        }
+        if (selText == 'Product Country') {
+            for (i = 0; i < tableRows.length; i++) {
+                productCountry = tableRows[i].querySelector(".product-country").textContent.toUpperCase();
+                if (productCountry.indexOf(filter) > -1) {
+                    tableRows[i].style.display = "";
+                }
+                else {
+                  tableRows[i].style.display = "none";
+                }
+            }
+        }
+        if (selText == 'Product Type') {
+            for (i = 0; i < tableRows.length; i++) {
+                productType = tableRows[i].querySelector(".product-type").textContent.toUpperCase();
+                if (productType.indexOf(filter) > -1) {
+                    tableRows[i].style.display = "";
+                }
+                else {
+                  tableRows[i].style.display = "none";
+                }
+            }
+        }
+        if (selText == 'Product Dietary Attributes') {
+            console.log(selText)
+            for (i = 0; i < tableRows.length; i++) {
+                productDietary = tableRows[i].querySelector(".product-dietary").textContent.toUpperCase();
+                if (productDietary.indexOf(filter) > -1) {
+                    tableRows[i].style.display = "";
+                }
+                else {
+                  tableRows[i].style.display = "none";
+                }
+            }
+        }
+
+    }
+
+    // Call filterTableRows with selText as argument
+    filterTableRows();
+}
+
+$(document).ready(function() {
+    $(".dropdown-menu li a").click(function(){
+        selText = $(this).text(); // Update selText when a dropdown menu item is clicked
+        $(this).parents('.dropdown').find('.dropdown-toggle').html(selText+' <span class="caret"></span>');
+        myFunction(); // Call myFunction after updating selText
+    });
+
+    $("#mySearch").on("input", function() {
+        myFunction(); // Call myFunction when the search input changes
+    });
+});
+</script>
+
+{% endblock %}
+
+{% endblock %}

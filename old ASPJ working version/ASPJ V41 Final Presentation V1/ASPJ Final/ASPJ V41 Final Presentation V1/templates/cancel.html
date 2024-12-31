@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block title %} Checkout canceled {% endblock %}
+
+{% block navbar %}{% endblock %}
+{% block content %}
+{% from "includes/_formHelper.html" import render_field %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+<section>
+  {% if 'Your card was declined' in error %}
+  <p>Your card was declined. Please check your payment details or contact your bank for more information.</p>
+{% elif 'An invalid request occurred.' in error %}
+  <p>An invalid request occurred. Please Try Again Later</p>
+{% else %}
+  <p>An error has occurred. This may be an issue by stripe. Please Try Again Later</p>
+{% endif %}
+<a href="{{ url_for('products') }}" class="btn btn-primary">
+  Back to Products
+</a>
+</section>
+{% endblock %}

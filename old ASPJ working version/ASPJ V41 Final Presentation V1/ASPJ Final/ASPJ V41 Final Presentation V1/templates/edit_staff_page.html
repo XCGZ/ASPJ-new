@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+</head>
+<body>
+    {% extends "base.html" %}
+    {% block title %} Edit staff page {% endblock %}
+
+    {% block navbar %}
+    {% include 'includes/_staff_navbar.html' %}
+    {% endblock %}
+
+    {% block content %}
+    {% from "includes/_formHelper.html" import render_field %}
+
+<!--  <h1>Edit Staff Page</h1>-->
+   {% from "includes/_formHelper.html" import render_field %}
+    <form action="" method="POST">
+        <div class="container">
+            {{ form.hidden_tag() }}  <!-- This includes the CSRF token -->
+            {{ render_field(form.staff_username,class="form-control") }}
+            <br>
+            {{ render_field(form.email,class="form-control") }}
+            <br>
+            {{ render_field(form.phone_no,class="form-control") }}
+            <br>
+            {{ render_field(form.address,class="form-control") }}
+            <br>
+            {{ render_field(form.city,class="form-control") }}
+            <br>
+            {{ render_field(form.state,class="form-control") }}
+            <br>
+            {{ render_field(form.country,class="form-control") }}
+            <br>
+            {{ render_field(form.postalcode,class="form-control") }}
+            <br>
+            {{ render_field(form.role,class="form-control") }}
+        </div>
+        <div class="container">
+            <br>
+            <input type="submit" value="Submit" class="btn btn-primary"/>
+            <input type="button" value="Cancel" onclick="history.back()" class="btn btn-light"/>
+        </div>
+    </form>
+    {% endblock %}
+</body>
+</html>

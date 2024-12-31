@@ -1,0 +1,21 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    {% extends "base.html" %}
+    {% block title %}{% endblock %}
+    {% block navbar %}
+    {% include 'includes/_staff_navbar.html' %}
+    {% endblock %}
+
+    {% block content %}
+    {% from "includes/_formHelper.html" import render_field %}
+
+   <h1>Staff Dashboard</h1>
+{% endblock %}
+</body>
+</html>

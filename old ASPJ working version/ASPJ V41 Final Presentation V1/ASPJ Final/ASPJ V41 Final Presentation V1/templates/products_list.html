@@ -1,0 +1,396 @@
+{% extends "base.html" %}
+{% block title %} Products page {% endblock %}
+
+{% block content %}
+{% from "includes/_formHelper.html" import render_field %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/products_list.css') }}">
+<style>
+    .accordion {
+        --bs-accordion-bg: white;
+        --bs-accordion-btn-color: blue;
+        --bs-accordion-btn-padding-x: 1.3em;
+        --bs-accordion-btn-padding-y: 0.3em;
+        --bs-accordion-border-width: 0;
+        --bs-accordion-active-color: blue;
+        --bs-accordion-active-bg: white;
+    }
+
+    .accordion-button:not(.collapsed)::after,
+    .accordion-button::after {
+        background-image: unset !important;
+    }
+
+    .accordion-button:focus {
+        box-shadow: none;
+        border-color: rgba(0, 0, 0, .125);
+    }
+</style>
+
+<!-- <header style="position:relative; top: 50px;">
+    <hr>
+</header> -->
+<br>
+<!-- Sort by dropdown button -->
+<div class="container-fluid">
+    <div class="row gy-3">
+        <div class="col-xxl-12 px-5">
+            <div class="btn-group">
+
+            </div>
+        </div>
+
+
+        <!-- Filter -->
+        <div class="col-xxl-2" >
+            <div class="accordion accordion-flush" id="accordionExample">
+                <form method="POST" action="{{ url_for('products') }}">
+                    <input type="hidden" name="csrf_token" value="{{ csrf_token }}">
+                    <fieldset id="filter">
+
+                        <legend id="filter-title">
+                            Filter By:
+                        </legend>
+
+                        <!-- Countries -->
+                        <div class="accordion-item">
+                            <div class="filter-item-title-div">
+                                <h5 class="filter-item-header">Country/Place of Origin</h5>
+                            </div>
+
+                            <div class="filter-item">
+                                <input type="checkbox" id="singapore" value="Singapore" name="country" {% if 'Singapore'
+                                    in country_value %}checked="checked" {% endif %}>
+                                <label for="singapore">Singapore</label>
+                            </div>
+
+                            <div class="filter-item">
+                                <input type="checkbox" id="japan" value="Japan" name="country" {% if 'Japan' in
+                                    country_value %}checked="checked" {% endif %}>
+                                <label for="japan">Japan</label>
+                            </div>
+
+                            <div class="filter-item">
+                                <input type="checkbox" id="china" value="China" name="country" {% if 'China' in
+                                    country_value %}checked="checked" {% endif %}>
+                                <label for="china">China</label>
+                            </div>
+
+                            <div class="filter-item">
+                                <input type="checkbox" id="india" value="India" name="country" {% if 'India' in
+                                    country_value %}checked="checked" {% endif %}>
+                                <label for="india">India</label>
+                            </div>
+
+                            <div class="viewmore-hr">
+                                <!-- <h2 class="accordion-header" id="panelsStayOpen-headingOne">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="false"
+                                        aria-controls="panelsStayOpen-collapseOne">
+                                        View More
+                                    </button>
+                                </h2>
+                                <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse"
+                                    aria-labelledby="panelsStayOpen-headingOne">
+                                    <div class="accordion-body">
+                                        <strong>This is the second item's accordion body.</strong> It is hidden by
+                                        default, until the collapse plugin adds the appropriate classes that we use to
+                                        style each element. These classes control the overall appearance, as well as the
+                                        showing and hiding via CSS transitions. You can modify any of this with custom
+                                        CSS or overriding our default variables. It's also worth noting that just about
+                                        any HTML can go within the <code>.accordion-body</code>, though the transition
+                                        does limit overflow.
+                                    </div>
+                                </div> -->
+                        </div>
+
+
+
+
+                        <!-- Dietary attributes -->
+                        <div class="accordion-item">
+                            <div class="filter-item-title-div" style="padding-top: 1.5em ">
+                                <h5 class="filter-item-header">Dietary Attributes</h5>
+                            </div>
+
+                            <div class="filter-item">
+                                <input type="checkbox" id="upcycled" value="Upcycled" name="dietary" {% if 'Upcycled' in
+                                    dietary_value %}checked="checked" {% endif %}>
+                                <label for="upcycled">Upcycled</label>
+                            </div>
+
+                            <div class="filter-item">
+                                <input type="checkbox" id="recycled" value="Recycled" name="dietary" {%
+                                    if 'Recycled' in dietary_value %}checked="checked" {% endif %}>
+                                <label for="recycled">Recycled</label>
+                            </div>
+
+                            <div class="viewmore-hr">
+                                <!-- <h2 class="accordion-header" id="panelsStayOpen-headingTwo">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#panelsStayOpen-collapseTwo" aria-expanded="false"
+                                        aria-controls="panelsStayOpen-collapseTwo">
+                                        View More
+                                    </button>
+                                </h2>
+                                <div id="panelsStayOpen-collapseTwo" class="accordion-collapse collapse"
+                                    aria-labelledby="panelsStayOpen-headingTwo">
+                                    <div class="accordion-body">
+                                        <strong>This is the second item's accordion body.</strong> It is hidden by
+                                        default, until the collapse plugin adds the appropriate classes that we use to
+                                        style each element. These classes control the overall appearance, as well as the
+                                        showing and hiding via CSS transitions. You can modify any of this with custom
+                                        CSS or overriding our default variables. It's also worth noting that just about
+                                        any HTML can go within the <code>.accordion-body</code>, though the transition
+                                        does limit overflow.
+                                    </div>
+                                </div> -->
+                            </div>
+                        </div>
+                            <!-- Type of product -->
+                            <div class="accordion-item">
+                                <div class="filter-item-title-div" style="padding-top: 1.5em ">
+                                    <h5 class="filter-item-header">Type of Product</h5>
+                                </div>
+                                
+                                <div class="filter-item">
+                                    <input type="checkbox" id="shoes" value="Shoes" name="type" {% if 'Shoes' in
+                                        type_value %}checked="checked" {% endif %}>
+                                    <label for="shoes">Shoes</label>
+                                </div>
+
+                                <div class="filter-item">
+                                    <input type="checkbox" id="tees" value="Tees" name="type" {% if 'Tees' in
+                                        type_value %}checked="checked" {% endif %}>
+                                    <label for="tees">Tees</label>
+                                </div>
+                                
+
+                                
+
+                    </fieldset>
+                    <div>
+                        <input type="submit" value="Filter" class="btn btn-primary">
+                        <input type="reset" value="Clear All" class="btn btn-danger" onclick="window.location.href = '{{ url_for('products') }}'">
+
+                    </div>
+                </form>
+            </div>
+        </div>
+        <!-- Filter -->
+
+
+
+        <div class="col-xxl-10">
+            <div id="carouselExampleAutoplaying" class="carousel slide advertisment-carousel" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                    <div class="carousel-item active c-item" >
+                        <img src="{{ url_for('static', filename='Images/carousel_1.jpg') }}" class="d-block w-100 c-img"
+                            alt="...">
+                    </div>
+                    <div class="carousel-item c-item">
+                        <img src="{{ url_for('static', filename='Images/carousel_2.jpg') }}" class="d-block w-100 c-img"
+                            alt="...">
+                    </div>
+                    <div class="carousel-item c-item">
+                        <img src="{{ url_for('static', filename='Images/carousel_3.jpg') }}" class="d-block w-100 c-img"
+                            alt="...">
+                    </div>
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying"
+                    data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying"
+                    data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+            </div>
+                <div class="row ">
+                    <div class="col-12 d-flex justify-content-center pt-5">
+                        <h2 class="section-title">
+                            Shop Products
+
+                        </h2>
+                    </div>
+
+                    <!-- Search Bar text box -->
+                    <div class="col-12">
+                        <div class="form-group">
+                            {{ render_field(form.search, class="form-control", id="mySearch", onkeyup="myFunction()",placeholder="Search For Product", title="Type in a category", style="width: 100%;") }}
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <p>There are {{count}} products</p>
+                    </div>
+                    <!-- Search Bar text box -->
+                <form method="POST" action="{{ url_for('add_product_cart') }}">
+                    <div id="myMenu" class="row product-list">
+                    {% for item in products_dict %}
+                    <div class="col-xxl-4 products-container pt-3">
+                        <div class="product-box item" style="background-color: white;">
+
+
+                            <a href="{{ url_for('specific_product', name=products_dict[item].get_name()) }}" class="card-link">
+                                <img src="" data-src="{{ url_for('static', filename = products_dict[item].get_url()) }}" alt="" id="myImg" class="product-img boximages lazy-load">
+                            </a>
+                            <!-- Modal Button ends -->
+                            <!-- Modal content -->
+                            <div class="modal fade" id="exampleModal{{item}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+
+                                <div class="modal-dialog modal-xl">
+
+                                    <div class="modal-content border-0 bg-transparent">
+
+                                        <div class="modal-header border-0">
+
+                                            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close">
+
+                                            </button>
+
+                                        </div>
+
+                                        <div class="modal-body" style="display: flex; flex-direction: column; align-items: center; margin-top: auto;">
+                                            <h2 class="product-title" style=" width: 50%; border-bottom: 1px solid black; background-color: white; padding: 0.5em;">
+                                                {{ products_dict[item].get_name() }}
+                                            </h2>
+
+                                            <img src="" data-src="{{ url_for('static', filename = products_dict[item].get_url()) }}" style="width: 50%; height: 50%;" class="lazy-load">
+                                        </div>
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+                            <!-- Modal content ends -->
+                            <div class="product-text">
+
+                                <h3 class="price" style="padding-left: 10px;">
+                                    ${{ "%0.2f" | format(products_dict[item].get_price() | float) }}
+                                </h3>
+
+                                <h2 class="product-title" style="overflow-wrap: break-word; padding-left: 10px; text-align: center;">
+                                    {{ products_dict[item].get_name() }}
+                                </h2>
+                                <div style="display: flex; flex-direction: column; align-items: center; margin-top: auto;">
+
+                                    {% if products_dict[item].get_quantity() > 0 and products_dict[item].get_quantity() != 0 %}
+
+                                        {% if products_dict[item].get_id()|string not in cart_session %}
+
+                                            <button type="submit" name="id" value="{{products_dict[item].get_id()}}" class="btn btn-success mt-auto">
+                                                Add to Cart
+                                            </button>
+
+                                        {% else %}
+
+                                            <button type="button" name="" value="{{products_dict[item].get_id()}}" class="btn btn-success mt-auto" onclick="alert('{{products_dict[item].get_name()}} is already in cart!')">
+                                                Add to Cart
+                                            </button>
+
+                                        {% endif %}
+
+                                    {% else %}
+
+                                        <h5 id="out-of-stock" style="text-align: center; color: red; font-size: 1rem;">
+                                            Sorry, This Product is temporarily out of stock
+                                        </h5>
+
+                                    {% endif %}
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    {% endfor %}
+                </div>
+                </div>
+
+            </form>
+        </div>
+    </div>
+</div>
+
+
+<div id="productContainer">
+    <p></p>
+</div>
+
+</div>
+
+{% block footer %}
+
+        {% endblock %}
+
+
+
+{% block javascript %}
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    var resetButton = document.querySelector('input[type="reset"]');
+    var checkboxes = document.querySelectorAll('input[type="checkbox"]');
+
+    resetButton.addEventListener("click", function () {
+        checkboxes.forEach(function (checkbox) {
+            checkbox.checked = false;
+        });
+    });
+});
+function myFunction() {
+        var input, filter, productContainers, i, productName;
+        input = document.getElementById("mySearch");
+        filter = input.value.toUpperCase();
+        productContainers = document.querySelectorAll(".products-container");
+        for (i = 0; i < productContainers.length; i++) {
+            productName = productContainers[i].querySelector(".product-title").textContent.toUpperCase();
+            if (productName.indexOf(filter) > -1) {
+                productContainers[i].style.display = "";
+            } else {
+                productContainers[i].style.display = "none";
+            }
+        }
+    }
+
+   // Lazy load images using Intersection Observer
+   const lazyLoadImages = document.querySelectorAll('.lazy-load');
+
+const lazyLoadObserver = new IntersectionObserver((entries, observer) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            const img = entry.target;
+            img.src = img.dataset.src;
+            img.classList.remove('lazy-load');
+            lazyLoadObserver.unobserve(img);
+        }
+    });
+});
+
+lazyLoadImages.forEach(image => {
+    lazyLoadObserver.observe(image);
+});
+
+document.querySelectorAll('.card-body').forEach(cardBody => {
+        cardBody.addEventListener('click', function(event) {
+            // Check if the click event originated from outside the button
+            if (!event.target.closest('button')) {
+                // Find the closest anchor tag within the card body
+                const anchorTag = this.querySelector('.card-link');
+                // Trigger the click event of the anchor tag
+                if (anchorTag) {
+                    anchorTag.click();
+                }
+            }
+        });
+    });
+
+</script>
+
+{% endblock %}
+
+{% endblock %}

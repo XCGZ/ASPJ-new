@@ -1,0 +1,174 @@
+/* ContactUsPage */
+/* Picture */
+#contacttop .container {
+    color: #F5EBDC;
+    padding: 5em 0 5em 0;
+}
+
+#contacttop {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url("../Images/randomstockimg.jpg");
+    background-size: cover;
+
+}
+
+/* Double Card */
+#contactmid #contactcard{
+    background-color: #e2d9c9;
+    text-align: center;
+    position: relative;
+    top: -4em;
+    border: 1px solid black;
+    padding: 2em 2em 2em 2em;
+}
+
+#contactmid div i {
+    font-size: 2em;
+    padding-bottom: 1em;
+}
+
+#contactmid div h5 {
+    font-family: 'Flamebold', sans-serif;
+    padding-bottom: 1em;
+}
+
+#contactmid div p {
+    padding: 0 1em 1em 1em;
+}
+
+#contactmid div p a, #contactbottom a {
+    color: #88B04B;
+    text-decoration: none;
+}
+
+#contactmid div p a:hover, #contactbottom a:hover {
+    color: #59762e;
+    text-decoration: underline;
+}
+
+/* Form */
+.contactform {
+    text-align: left;
+    padding: 0 2em 0 2em;
+}
+.contactform label {
+    font-weight:800;
+}
+
+.contactform input, .contactform textarea {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.contactform span {
+    color:red;
+}
+
+.contactform p {
+    font-size: 1.8em;
+    font-weight: bold;
+    text-align: center;
+    margin-top: 5%;
+
+}
+
+/* Location */
+#intel {
+    background-color: #e2d9c9;
+}
+
+#contactbottom h1 {
+    text-align: center;
+    padding: 1em 0 1em 0;
+    font-family: 'Flamesans', sans-serif;
+}
+
+#contactbottom {
+    margin-bottom: 5em;
+}
+
+#intel h5 {
+    font-size: 1.5em;
+    font-family: 'Flamebold', sans-serif;
+    padding: 1em 0 1em 1em;
+}
+
+#intel p {
+    padding: 0 0 0 1.5em;
+}
+
+#catalogue {
+    background-color: #cfd0d0;
+}
+
+#catalogue #content {
+    text-align: center;
+    color: #F5EBDC;
+    padding: 2em 0 1em 0;
+}
+
+#catalogue #content img{
+    width: 30%;
+    height: auto;
+}
+
+#FeedbackBox {
+    background-color: #4fb093;
+    border-radius: 5px;
+    box-shadow: 5px 5px #adb5bd;
+    font-size: 20px;
+}
+
+#labels p {
+    color: white;
+    font-weight: bold;
+  }
+
+#feedbackcontent {
+    background-color: white;
+    border-radius: 5px;
+    color: black;
+    font-size :16px;
+    height: 100px;
+    margin: 0 0 2rem 0;
+    font-family: Roboto, sans-serif;
+    padding: 1rem 0 1rem 0;
+  }
+
+#footer {
+    background-color: #502314;
+    color: #F5EBDC;
+}
+
+#footer .row {
+    padding: 2em 5em 1em 5em;
+}
+
+#footer span, #footer th {
+    font-size: 1.8em;
+    font-family: 'Flamebold', sans-serif;
+    color: #F5EBDC;
+}
+
+#footer a {
+    text-decoration: none;
+    color: #F5EBDC;
+    font-size: 0.9em;
+}
+
+#copyright {
+    font-size: 0.5em;
+    color: #d3c4ae;
+}
+
+#icons i {
+    font-size: 1.8em;
+    padding-right: 15px;
+}
+
+
+

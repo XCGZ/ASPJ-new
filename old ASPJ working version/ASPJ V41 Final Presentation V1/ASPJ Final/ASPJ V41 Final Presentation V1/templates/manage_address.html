@@ -1,0 +1,102 @@
+{% extends "base.html" %}
+{% block title %}Products System - Retrieve Products{% endblock %}
+
+{% block content %}
+{% from "includes/_formHelper.html" import render_field %}
+<style>
+    table {
+        table-layout: fixed;
+        width: 100%;
+    }
+    th, td {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+</style>
+<a href="/retrieveProfile" class="btn btn-success active">Account Details</a>
+<a href="/create-address" class="btn btn-success active">Create Address</a>
+
+<h1 class="display-4">Retrieve Address</h1>
+
+<div>
+    {% if count == 0 %}
+    <p>There are no addresses.</p>
+    {% elif count == 1 %}
+    <p>There is 1 address.</p>
+    {% else %}
+    <p>There are {{ count }} addresses.</p>
+    {% endif %}
+</div>
+</div>
+<div>
+    <table class="table table-striped">
+
+        <thead>
+            <tr>
+                <th>Email</th>
+                <th>Line 1</th>
+                <th>Line 2</th>
+                <th>City</th>
+                <th>Country</th>
+                <th>State</th>
+                <th>Postal Code</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody id="myMenu" class="card-list">
+            {% for item_id in address_dict %}
+            <tr class="address-container ">
+                <td class="email">{{ address_dict[item_id]['email'] }}</td>
+                <td class="Line 1">{{ address_dict[item_id]['line1'] }}</td>
+                <td class="Line 2">{{ address_dict[item_id]['line2'] }}</td>
+                <td class="City">{{ address_dict[item_id]['City'] }}</td>
+                <td class="Country">{{ address_dict[item_id]['Country'] }}</td>
+                <td class="State">{{ address_dict[item_id]['State'] }}</td>
+                <td class="Postal-Code">{{ address_dict[item_id]['Postal_Code'] }}</td>
+                <td>
+                    <form action="{{url_for('delete_address', id=item_id)}}" method="POST">
+                        <!-- Button to Open the Modal -->
+                        <button type="button" class="btn btn-danger" data-bs-toggle="modal"
+                            data-bs-target="#myModal_{{item_id}}">
+                            Delete
+                        </button>
+                        <!-- The Modal -->
+                        <div class="modal" id="myModal_{{item_id}}">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <!-- Modal Header -->
+                                    <div class="modal-header">
+                                        <h4 class="modal-title">Delete Confirmation</h4>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                                    </div>
+                                    <!-- Modal body -->
+                                    <div class="modal-body">
+                                        {% if address_dict[item_id][line2] %}
+                                        {% set concat_address = address_dict[item_id]['line1'] + ', ' + address_dict[item_id]['line2'] %}
+                                        Are you sure you want to delete Address: {{ concat_address }}?
+                                    {% else %}
+                                    {% set concat_address = address_dict[item_id]['line1'] %}
+                                    Are you sure you want to delete Address: {{ concat_address }}?
+                                    {% endif %}
+                                    </div>
+                                    <!-- Modal footer -->
+                                    <div class="modal-footer">
+                                        <input type="submit" value="Delete" class="btn btn-danger">
+                                        <button type="button" class="btn btn-secondary"
+                                            data-bs-dismiss="modal">Cancel</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </td>
+            </tr>
+            {% endfor %}
+        </div>
+        </tbody>
+    </table>
+</div>
+{% endblock %}
+{% block footer %}
+{% endblock %}

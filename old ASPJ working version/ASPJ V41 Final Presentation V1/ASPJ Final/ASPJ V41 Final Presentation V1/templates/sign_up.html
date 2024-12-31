@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h1> Sign Up </h1>
+
+<form action="/" method="POST">
+    {{ form.hidden_tag() }}  <!-- This includes the CSRF token -->
+    <p>
+        {{form.username.label}} <br>
+        {{form.username}}
+    </p>
+    <p>
+        {{form.password.label}} <br>
+        {{form.password}}
+    </p>
+    <p>
+        {{form.submit()}}
+    </p>
+</form>
+
+{% endblock %}

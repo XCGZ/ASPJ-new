@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block title %}Success{% endblock %}
+
+{% block content %}
+
+
+<div class="container-fluid text-center p-5" style="min-height: 500px;">
+    <img src="{{ url_for('static', filename='Images/tick.png') }}" alt="" class="img-fluid m-5" style="width: 120px;">
+    <h4>Thank you!</h4>
+    <h4>We will be in touch with you shortly.</h4>    
+    <a class="btn btn-primary my-5" href="/" role="button">Back to Home</a>
+    <a class="btn btn-primary my-5" href="/help" role="button">To FAQ Page</a>
+</div>
+
+    
+{% endblock %}

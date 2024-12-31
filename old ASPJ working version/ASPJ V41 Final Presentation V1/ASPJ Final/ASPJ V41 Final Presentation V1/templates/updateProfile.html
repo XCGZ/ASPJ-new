@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+{% block title %}Profile Management - Update Profile {% endblock %}
+
+{% block navbar %}
+{% include 'includes/_loggednavbar.html' %}
+{% endblock %}
+
+{% block content %}
+{% from "includes/_formHelper.html" import render_field %}
+
+<form action="" method="post" enctype="multipart/form-data">
+    <input type="hidden" name="csrf_token" value="{{ csrf_token }}">
+    <div class="form-group">
+        {{ render_field(form.username, class="form-control") }}
+    </div>
+
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% for category, message in messages %}
+            {% if category == 'username_error' %}
+                <div class="alert alert-danger">{{ message }}</div>
+            {% endif %}
+        {% endfor %}
+    {% endwith %}
+
+    <div class="form-group">
+        {{ render_field(form.name, class="form-control") }}
+    </div>
+    <div class="form-group">
+        {{ render_field(form.email, class="form-control") }}
+    </div>
+
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% for category, message in messages %}
+            {% if category == 'email_error' %}
+                <div class="alert alert-danger">{{ message }}</div>
+            {% endif %}
+        {% endfor %}
+    {% endwith %}
+
+    <div class="form-group">
+        {{ render_field(form.gender, class="form-control") }}
+    </div>
+    <div class="form-group">
+        {{ render_field(form.country_code, class="form-control") }}
+    </div>
+    <div class="form-group">
+        {{ render_field(form.phone_no, class="form-control") }}
+    </div>
+    <div class="form-group">
+        {{ render_field(form.date_of_birth, class="form-control") }}
+    </div>
+    <div class="form-group">
+        {{ render_field(form.profile_picture, class="form-control") }}
+    </div>
+    <input type="submit" value="Submit" class="btn btn-primary"/>
+</form>
+
+{% endblock %}

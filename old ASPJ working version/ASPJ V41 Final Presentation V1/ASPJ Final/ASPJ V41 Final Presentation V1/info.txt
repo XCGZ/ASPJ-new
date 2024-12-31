@@ -1,0 +1,136 @@
+stripe login
+
+stripe listen --forward-to localhost:3306/webhook
+https:
+stripe listen --skip-verify --forward-to https://localhost:3306/webhook
+self signed cert:
+"C:\Program Files\Git\usr\bin\openssl.exe" req -x509 -newkey rsa:4096 -nodes -out cert.pem -keyout key.pem -days 3650
+
+local ip:
+https://127.0.0.1:3306/
+
+for nginx waitress server:
+C:\Windows\System32\Drivers\etc\hosts
+https:
+stripe listen --skip-verify --forward-to https://localhost/webhook
+
+local ip:
+https://127.0.0.1/
+
+
+
+what to do:
+
+stripe: 
+customize the stripe checkout, try to add step process (1), (2), (3)
+
+fix the quantity issue and add stripe elements(done)
+
+stripe card feed checkout. must add card and tokenize for checkout. able to create customer already and pass it into the paymentintent using the id. i need to create a new webpage for
+ customer to create their card details on usiung the customer object than store in database than retrieve and put as input box
+
+
+the uncommented js in the checkout.js should be for the webpage that allows customers to input theior card details.
+
+uncomment the other js for the actual checkout.js they should not be combined im fukcing retarded
+
+must have dynamic email(prob wait till integration)
+
+for the email and the card, i will check the logged in user email at the stripe checkout and see if he has any cards in the sql by checking the sql based on emails. i will then
+list out the cards he has in the sql on the checkout page for him to choose
+
+remove stripe auto card creation checking algorithm and implement my own luhn algorithm (IMPT)
+
+so basically, the checkout goes through, webhooks are run, bought products have the item. only problem is, cartproducts remove button not working, it generates a checkout, itme not removed form cart after checkout
+
+need to also fix the return problem, does not go success page, thinking of haveing selection menu for cards on a page after cartproducts, the page after cartproducts should be the final page.
+that page should show the cart details like names, pics etc. this is very good also to help with next part as i would be able to send get request with those details since they are on the same page.
+basically i need to code ther page like how i coded the cartproducts page because currently the get request sent by cartproducts, the details should be for that page. (card creation algo impt)
+i can basically skip the entire saved cart part where i would usually have to change js. i can keep current checkout js (this is because, i will be doing save card check before the actual checkouot gateway.
+all i have to do is get data from that page and send to gateway and done)
+
+
+problems:
+u can go to success page and it will immediate deduct quantity which is wrong(resolved)
+after checkout, cart does not remove product(resolved)
+
+what to do:
+- customer address input and retrtieve for the payment process
+- remove stripe card validation and write own validation
+
+
+after creating address at create_address, it would save to db
+it would be like card. i want to just store in db.
+
+the card i select still doesnt do anything (on the cartcheckout page i select card) doesnt change anyt vlayhwe. doesnt recognise which card i choose. it just use first card in db
+
+store addresses in db based on email.
+checkout process: click on cartcheckout, it will send selected card(radio button) and selected address (radio button) to the create-payment-intent ->(after send) payment_method modify with the selected card and selected address
+
+
+****impt: probably high chance will put address crewation on same page as card creation as it makes itr much easier. i will probably have two buttons, give customer option which to create or if they want to creat both
+prob use an if statement with button to show whether user wants to add card or address. i will then not show the other part. i cant show both because there would be requirements 
+
+or another way maybe is to just do creation of everything in card(cus_id, pm etc.) than when go to cartcheckout, just choose which card i want, i will check card based on last 4 and take the correct one from db
+then i will just do modify and add billing details.
+
+need to luhn algo(impt need do this) and last should be adding a way for them to add card and shipping if they dont have saved option
+, add shipping price to show on page and show total pirce (this is done, shown on page alr)
+
+
+i will use own algo to check card details in client side, try do realtime. after date, store all these details in mysql. when transmit from client side to server or to mysql, encrypt in transmission.
+encrypt in mysql as well (Hash might be better for cards) will probably try to store in mysql as encrypted, when want checkout, decrypt and tokenize and pass to checkout(DONE)
+
+fucking encrypting the card bullshit dogshit. everytime i want encrypt card details, new random key generated. i will encrypt card and encrypt key and store encrypted card details and encrypted key details in db
+to decryupt card, i have to decrypt the key first than use decrypted key to decrypt card (DONE)
+
+aws kms for master key(optional) and luhn alogrithm (done), use wtforms for input boxes (done) 
+
+card page and address page that shows the saved cards and addresses not so impt
+
+add the email for success.
+maybe more logging
+show log on webpage.
+customer info log to log account details like signup 
+change all db to sql
+logs:
+log add product.
+log product delete
+log product update
+log exceptions
+a critical error:
+drop table
+system outage
+send sms to admin
+
+saved card and address 
+(customer can delete cards and address)
+
+for file upload:
+save filename to class
+save file image to sql
+select fileimage from sql where filename = filename
+remove products in db and only keep like 10. to accomodate for the new way to get url
+
+
+whats left:
+priority:
+login integration (almost done)
+change shelve to mysql (done)
+remove products in db and only keep like 10. to accomodate for the new way to get url
+login logging
+change filter names
+for system outage (create system logs and add traceback and whatsapp)
+csrf, add required radio button, sleep maybe for purchase history
+page to show cards and address so they can remove
+aws kms
+staff purchase history viewing
+
+
+iomportant info when presenting and for laptop:
+- twilio is made secure (account_sid and auth token) by storing credential in environmental variables.
+- create a logs folder outside aspj assigment (in yr 2 sh0ould be)
+    - commands:
+        1. set TWILIO_ACCOUNT_SID=AC69547061f7d0320e956f1d79452a61b8
+        2. set TWILIO_AUTH_TOKEN=d2a158a668d09042ae095d8bf2f0450d
+        3. https://www.twilio.com/docs/usage/secure-credentials

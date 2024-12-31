@@ -1,0 +1,58 @@
+
+
+<nav class="navbar navbar-expand-sm navbar-dark" style="background-color: #3A5A40">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="/dash"><img style="width: 100%; width: 100px;" src="{{ url_for('static', filename='/Images/untitled6.png') }}" alt=""></a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="collapsibleNavbar">
+      <ul class="navbar-nav">
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Product Management</a>
+            <ul class="dropdown-menu">
+
+                    <li><a class="dropdown-item" href="{{ url_for('create_products') }}">Create Products</a></li>
+                <li><a class="dropdown-item" href="{{ url_for('retrieve_products') }}">Manage Products</a></li>
+             </ul>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Staff Management</a>
+          <ul class="dropdown-menu">
+          {% if session['role'] == 'Admin' %}
+                <li><a class="dropdown-item" href="{{ url_for('createstaff') }}">Create Staff</a></li>
+          {% endif %}
+           <li><a class="dropdown-item" href="{{ url_for('account_table') }}">Retrieve Staff</a></li>
+           </ul>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Customer Management</a>
+          <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="{{ url_for('create_customer') }}">Create Customer</a></li>
+                <li><a class="dropdown-item" href="{{ url_for('retrieve_customers') }}">Manage Customer</a></li>
+           </ul>
+        </li>
+        {% if session['role'] == 'Auditor' or session['role'] == 'Admin' %}
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">System Logs</a>
+          <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="{{ url_for('logs') }}">View Logs</a></li>
+           </ul>
+        </li>
+        {% endif %}
+        
+    
+      </ul>
+    </div>
+    <div class="col expand_full d-flex justify-content-end">
+      <ul class="navbar-nav mb-2 mb-lg-0">
+          <!-- if current user is authenticated  (add iun when intergated)-->
+      
+          </li>
+          <li class="nav-item me-5">
+              <a class="nav-link" href="{{ url_for('customer_logout') }}"><i class="bi bi-person-circle"></i> Logout</a>
+          </li>
+      </ul>
+  </div>
+  </div>
+</nav>

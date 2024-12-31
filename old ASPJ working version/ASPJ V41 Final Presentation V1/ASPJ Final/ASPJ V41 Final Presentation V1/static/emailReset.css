@@ -1,0 +1,24 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter&family=Poppins&display=swap');
+
+
+
+body{
+    font-family: 'Poppins', sans-serif;
+    background-color: darkgreen;
+}
+
+.container {
+    padding-top: 50px;
+
+}
+
+.background-image {
+    background-image: url('/SUPERMARKET EMAIL.jpg'); /* Replace 'background.jpg' with your actual image file */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 100vh; /* Adjust the height as needed */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

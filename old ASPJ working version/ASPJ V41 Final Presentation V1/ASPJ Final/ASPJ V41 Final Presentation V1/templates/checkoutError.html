@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+{% block title %} Checkout Error Page {% endblock %}
+
+{% block content %}
+{% from "includes/_formHelper.html" import render_field %}
+
+<h2>Sorry, this product is temporarily out of stock! </h2>
+<input type="button" value="Back to Products" class="btn btn-primary" onclick="window.location.href = 'http://127.0.0.1:3306/Products'">
+{% endblock %}

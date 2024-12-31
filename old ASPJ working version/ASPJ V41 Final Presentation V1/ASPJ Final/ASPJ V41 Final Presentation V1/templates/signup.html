@@ -1,0 +1,123 @@
+{% extends "base.html" %}
+{% block title %}Customer Sign Up{% endblock %}
+
+{% block navbar %}
+
+{% endblock %}
+
+{% block content %}
+{% from "includes/_formHelper.html" import render_field %}
+<link type="text/css" href="{{ url_for('static',filename='Css/signup.css') }}" rel="stylesheet">
+
+<div class="col-4">
+
+</div>
+
+  <div class="loginContainer col-4">
+    <form method="POST" action="{{ url_for('signup') }}" enctype="multipart/form-data">
+      <input type="hidden" name="csrf_token" value="{{ csrf_token }}">
+      <h1 class="form__title">Customer Sign Up</h1>
+      <div class="row">
+
+        <div class="form__input-group col-4">
+          {{ render_field(form.username, class="form__input") }}
+        </div>
+
+
+        <div class="form__input-group col-4">
+          {{ render_field(form.email, class="form__input") }}
+        </div>
+
+        <div class="form__input-group col-4">
+          {{ render_field(form.name, class="form__input") }}
+        </div>
+
+      </div>
+
+      <div class="row">
+        <div class="col- 4">
+
+          {% with messages = get_flashed_messages(with_categories=true) %}
+            {% for category, message in messages %}
+              {% if category == 'email_error' %}
+                <div class="alert alert-danger">{{ message }}</div>
+              {% endif %}
+            {% endfor %}
+          {% endwith %}
+
+        </div>
+
+        <div class="col-4">
+        </div>
+
+        <div class="col- 4">
+
+          {% with messages = get_flashed_messages(with_categories=true) %}
+            {% for category, message in messages %}
+              {% if category == 'username_error' %}
+                <div class="alert alert-danger">{{ message }}</div>
+              {% endif %}
+            {% endfor %}
+          {% endwith %}
+
+        </div>
+
+      </div>
+
+      <div class="form__input-group">
+        {{ render_field(form.password, class="form__input") }}
+      </div>
+
+      {% with messages = get_flashed_messages(with_categories=true) %}
+        {% for category, message in messages %}
+          {% if category == 'password_error' %}
+            <div class="alert alert-danger">{{ message }}</div>
+          {% endif %}
+        {% endfor %}
+      {% endwith %}
+
+      <div class="row">
+
+        <div class="form__input-group col-4">
+        {{ render_field(form.gender, class="form__input") }}
+        </div>
+        <div class="form__input-group col-4">
+          {{ render_field(form.country_code, class="form__input") }}
+        </div>
+        <div class="form__input-group col-4">
+          {{ render_field(form.phone_no, class="form__input") }}
+        </div>
+
+      </div>
+
+      <div class="form__input-group">
+        {{ render_field(form.date_of_birth, class="form__input datepicker") }}
+      </div>
+      <div class="form__input-group">
+        <label for="profile_picture">Profile Picture</label>
+        <input type="file" id="profile_picture" name="profile_picture">
+      </div>
+      <div id="prof" style="display: none;">
+        <div class="form-group">
+          {{ render_field(form.remarks, class="form__input") }}
+        </div>
+      </div>
+
+      <div class="form__input-group">
+        {{ render_field(form.recaptcha) }}
+      </div>
+
+      <input type="submit" value="Sign Up" class="form__button"/><br>
+
+      <p class="form__text">
+          <a class="form__link" href="/">Already have an account? Login Here</a>
+      </p>
+    </form>
+
+
+  </div>
+
+  <div class="col-4">
+
+  </div>
+{% endblock %}

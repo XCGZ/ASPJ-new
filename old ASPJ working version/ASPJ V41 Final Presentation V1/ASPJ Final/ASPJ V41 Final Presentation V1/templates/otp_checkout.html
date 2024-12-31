@@ -1,0 +1,92 @@
+{% extends "base.html" %}
+{% block title %} Products page {% endblock %}
+
+{% block content %}
+{% from "includes/_formHelper.html" import render_field %}
+
+<script src="https://js.stripe.com/v3/"></script>
+<!-- <script src="{{ url_for('static', filename='checkout.js') }}" defer></script> -->
+ <script>
+    window.onload = function() {
+    setTimeout(function() {
+        // Replace '/your-flask-route' with your actual Flask route
+        alert('OTP has expired')
+        window.location.href = "/cart-checkout";
+    }, 600000); // 6000000 milliseconds = 6 seconds
+};
+    document.addEventListener('DOMContentLoaded', function() {
+    const form = document.getElementById('payment-form');
+    const otpInput = document.getElementById('otp');
+    const otpSecret = '{{ otp_secret }}'; // Assuming otp_secret is passed from the backend
+
+    form.addEventListener('submit', function(event) {
+        if (otpInput.value !== otpSecret) {
+            event.preventDefault(); // Prevent form submission
+            alert('Invalid OTP');
+        }
+    });
+});
+    document.addEventListener('DOMContentLoaded', function() {
+            const stripe = Stripe('pk_test_51NWbl0AnVKG20ORq3ML4Gw1AsRYCKw3P9jwdfdrw47mzRhisAYC24f4nYNnBPitQdTO8buAgd68vLLlTgrp8gGHN002apdwN2j');
+            const otp_input = document.getElementById('otp');
+            
+            const options = {
+                clientSecret: '{{ client_secret }}',
+                appearance: {/* Add any desired appearance customization here */}
+            };
+
+            const elements = stripe.elements(options);
+            const paymentElement = elements.create('payment');
+            paymentElement.mount('#payment-element');
+
+            const form = document.getElementById('payment-form');
+            form.addEventListener('submit', async (event) => {
+                event.preventDefault();
+            
+                
+
+
+                const { error } = await stripe.confirmPayment({
+                    elements,
+                    
+                    confirmParams: {
+                        
+                        return_url: 'https://localhost:3306/success',  // Change to your success URL
+                    },
+                });
+
+                if (error) {
+                    // Show error message
+                    const errorMessage = document.getElementById('error-message');
+                    errorMessage.textContent = error.message;
+                }
+            });
+        });
+ </script>
+
+<link rel="stylesheet" href="{{ url_for('static', filename='checkout.css') }}" />
+<!-- Display a payment form -->
+ {% if cart_session != {} %}
+
+<form id="payment-form" method="GET" action="/create-payment-intent">
+    <input type="hidden" name="key" value="{{ key }}">
+    <input type="hidden" name="quantity" value="{{ quantity }}">
+    <input type="hidden" name="card_option" value="{{ selected_card }}">
+    <input type="hidden" name="address_option" value="{{ selected_address }}">
+    <div class="form-group">
+        {{ render_field(form.entered_otp, class="form-control", id="otp") }}
+    </div>
+  <br>
+    <input type="submit" value="Submit" class="btn btn-primary">
+</form>
+<h3>Please Enter the OTP that was sent to your email to confirm your purchase</h3>
+{% endif %}
+{% endblock %}
+
+
+
+
+{% block footer %}
+{% endblock %}
+
+
